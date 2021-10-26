@@ -75,11 +75,6 @@ namespace PresentationLayer
 
         }
 
-
-        private void btnUppdateraKategorier_Click(object sender, EventArgs e)
-        {
-
-
         private void btnLaggTillPodd_Click(object sender, EventArgs e)
         {
             if (validering.HarComboboxVarde(cbValdKategori))
@@ -105,5 +100,7 @@ namespace PresentationLayer
             }
 
         }
+
     }
 }
+

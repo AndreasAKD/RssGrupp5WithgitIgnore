@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace PresentationLayer
 {
     partial class Form1
@@ -182,6 +184,7 @@ namespace PresentationLayer
             this.btnUppdateraPoddlsita.TabIndex = 56;
             this.btnUppdateraPoddlsita.Text = "Uppdatera";
             this.btnUppdateraPoddlsita.UseVisualStyleBackColor = true;
+            this.btnUppdateraPoddlsita.Click += new System.EventHandler(this.btnUppdateraPoddlsita_Click);
             // 
             // btnTaBortPodd
             // 
@@ -341,6 +344,8 @@ namespace PresentationLayer
             this.PerformLayout();
 
         }
+
+    
 
         #endregion
 
