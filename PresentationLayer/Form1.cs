@@ -26,14 +26,16 @@ namespace PresentationLayer
 
             kategoriController = new KategoriController();
             hamtaKategorier();
-           
+
+
 
             cbUppdateringsfrekvens.Items.Add("10");
 
 
+
+            4795ee1e95985182929a151669a3ed669aa27922
             validering = new Validering();
             podKontroller = new PodcastController();
-
         }
 
         private void btnNyKategori_Click(object sender, EventArgs e)
@@ -114,14 +116,5 @@ namespace PresentationLayer
 
         }
 
-
-        private void btnUppdateraKategorier_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUppdateraPoddlsita_Click(object sender, EventArgs e)
-        {
-
-        }
-    } }
+    }
+}
