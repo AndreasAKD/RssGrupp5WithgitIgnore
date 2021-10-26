@@ -11,5 +11,7 @@ namespace DataAccessLayer.Repositories
         void Updatera(int index, T newEntity);
         List<T> HamtaAlla();
 
+        int hamtaIndexAvNamn(string name);
+
     }
 }
