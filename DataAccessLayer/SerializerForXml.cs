@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using DataAccessLayer.Exceptions;
 using Models;
 
 
@@ -42,7 +43,8 @@ namespace DataAccessLayer
             }
             catch (Exception)
             {
-                //throw new SerializerException("poddar.xml", "Kan inte deserializera xml för podcast");
+                throw new KanInteSerializeraException();
+
             }
         }
 
@@ -78,7 +80,8 @@ namespace DataAccessLayer
             }
             catch (Exception)
             {
-                //throw new SerializerException("categories.xml", "could not deserialize");
+                throw new KanInteSerializeraException();
+
             }
         }
     }
