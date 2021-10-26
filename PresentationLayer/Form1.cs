@@ -23,16 +23,11 @@ namespace PresentationLayer
         {
 
             InitializeComponent();
-
+            
             kategoriController = new KategoriController();
             hamtaKategorier();
-
-            cbUppdateringsfrekvens.Items.Add("10");
-
-
             validering = new Validering();
             podKontroller = new PodcastController();
-
         }
 
         private void btnNyKategori_Click(object sender, EventArgs e)
@@ -108,11 +103,6 @@ namespace PresentationLayer
                 var antalAvsnitt = pod.AntalAvsnitt.Count.ToString();
                 dataGridAllaPoddar.Rows.Add(pod.Namn, pod.AntalAvsnitt, pod.Kategori, pod.UppdateringsFrekvens, "0");
             }
-
-        }
-
-        private void btnLaggTillPodd_Click(object sender, EventArgs e)
-        {
 
         }
     }
