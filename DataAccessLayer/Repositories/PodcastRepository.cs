@@ -47,5 +47,10 @@ namespace DataAccessLayer.Repositories
             poddLista[index] = newEntity;
             SparaAndringar();
         }
+
+        public int hamtaIndexAvNamn(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
