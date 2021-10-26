@@ -33,7 +33,7 @@ namespace PresentationLayer
 
 
 
-            4795ee1e95985182929a151669a3ed669aa27922
+            
             validering = new Validering();
             podKontroller = new PodcastController();
         }

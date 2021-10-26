@@ -148,7 +148,7 @@ namespace PresentationLayer
             this.btnUppdateraKategorier.TabIndex = 60;
             this.btnUppdateraKategorier.Text = "Uppdatera";
             this.btnUppdateraKategorier.UseVisualStyleBackColor = true;
-            this.btnUppdateraKategorier.Click += new System.EventHandler(this.btnUppdateraKategorier_Click);
+
             // 
             // btnNyKategori
             // 
@@ -345,7 +345,12 @@ namespace PresentationLayer
 
         }
 
-    
+        private void btnUppdateraPoddlsita_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
 
