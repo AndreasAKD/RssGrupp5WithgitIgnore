@@ -18,6 +18,7 @@ namespace Models
             Kategori = kategori;
             AntalAvsnitt = antalAvsnitt;
         }
+        public Pod() {  }
 
 
     }

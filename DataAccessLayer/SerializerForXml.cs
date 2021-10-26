@@ -15,7 +15,7 @@ namespace DataAccessLayer
         {
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Pod>));
+                XmlSerializer xmlSerializer = new XmlSerializer(poddar.GetType());
                 using (FileStream skapaXmlPod = new FileStream("podcasts.xml", FileMode.Create, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(skapaXmlPod, poddar);
@@ -23,7 +23,7 @@ namespace DataAccessLayer
             }
             catch (Exception)
             {
-                //throw new SerializerException("poddar.xml", "Kan inte serializera xml för podcast");
+                throw new KanInteSerializeraException();
             }
 
         }
@@ -31,8 +31,8 @@ namespace DataAccessLayer
 
         public List<Pod> PodDeserializera()
         {
-            try
-            {
+            //try
+            //{
                 List<Pod> poddLista;
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Pod>));
                 using (FileStream oppnaXml = new FileStream("podcasts.xml", FileMode.Open, FileAccess.Read))
@@ -40,12 +40,12 @@ namespace DataAccessLayer
                     poddLista = (List<Pod>)xmlSerializer.Deserialize(oppnaXml);
                 }
                 return poddLista;
-            }
-            catch (Exception)
-            {
-                throw new KanInteSerializeraException();
+            //}
+            //catch (Exception)
+            //{
+            //    throw new KanInteSerializeraException();
 
-            }
+            //}
         }
 
         public void KategoriSerializera(List<Kategori> kategoriLista)

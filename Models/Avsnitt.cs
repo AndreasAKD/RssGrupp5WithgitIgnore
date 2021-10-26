@@ -16,6 +16,8 @@ namespace Models
             AvsnittsBeskrivning = beskrivning;
         }
 
+        public Avsnitt() { }
+
     }
 
 }

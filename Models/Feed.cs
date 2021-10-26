@@ -15,6 +15,8 @@ namespace Models
         {
             Namn = namn;
         }
+
+        public Feed() { }
     }
 
 }

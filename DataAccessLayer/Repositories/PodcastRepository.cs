@@ -38,15 +38,15 @@ namespace DataAccessLayer.Repositories
         public List<Pod> HamtaAlla()
         {
             List<Pod> podcastLista = new List<Pod>();
-            try
-            {
+            //try
+            //{
                 podcastLista = dataHanterare.PodDeserializera();
-            }
+            //}
 
-            catch (Exception)
-            {
-                throw new KanInteSerializeraException();
-            }
+            //catch (Exception)
+            //{
+            //    throw new KanInteSerializeraException();
+            //}
             return podcastLista;
         }
 
