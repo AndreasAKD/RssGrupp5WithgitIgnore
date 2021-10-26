@@ -23,6 +23,7 @@ namespace PresentationLayer
             
             kategoriController = new KategoriController();
             hamtaKategorier();
+            cbUppdateringsfrekvens.Items.Add("10");
 
         }
 
@@ -72,6 +73,11 @@ namespace PresentationLayer
         }
 
         private void btnUppdateraKategorier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLaggTillPodd_Click(object sender, EventArgs e)
         {
 
         }
