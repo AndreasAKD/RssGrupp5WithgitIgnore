@@ -7,7 +7,7 @@ using Models;
 
 namespace DataAccessLayer.Repositories
 {
-    public interface IKategoriRepository<T> : IRepository<T> where T:Kategori
+    public interface IKategoriRepository<T> : IRepository<T> where T : Kategori
     {
        
     }

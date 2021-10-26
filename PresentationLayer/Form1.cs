@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
 
 namespace PresentationLayer
 {
@@ -14,12 +15,17 @@ namespace PresentationLayer
     {
         public Form1()
         {
+
             InitializeComponent();
+            hamtaKategorier();
+
         }
 
         private void btnNyKategori_Click(object sender, EventArgs e)
         {
-
+            KategoriController.skapaKategori(textBoxKategorier.Text);
+            hamtaKategorier();
+            textBoxKategorier.Clear();
         }
     }
 }
