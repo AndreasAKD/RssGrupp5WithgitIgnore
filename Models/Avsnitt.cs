@@ -9,14 +9,12 @@ namespace Models
     public class Avsnitt : Feed
     {
 
-        public string avsnittsBeskrivning { get; set; }
+        public string AvsnittsBeskrivning { get; set; }
 
-        public Avsnitt(string namn) : base(namn)
+        public Avsnitt(string namn, string beskrivning) : base(namn)
         {
-
+            AvsnittsBeskrivning = beskrivning;
         }
-
-
 
     }
 

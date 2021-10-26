@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Models;
+using DataAccessLayer.Exceptions;
 
 namespace DataAccessLayer.Repositories
 {
@@ -12,7 +15,7 @@ namespace DataAccessLayer.Repositories
 
         List<Pod> poddLista;
         SerializerForXml dataHanterare;
-       
+
 
         public PodcastRepository()
         {
@@ -34,7 +37,17 @@ namespace DataAccessLayer.Repositories
 
         public List<Pod> HamtaAlla()
         {
-            throw new NotImplementedException();
+            List<Pod> podcastLista = new List<Pod>();
+            try
+            {
+                podcastLista = dataHanterare.PodDeserializera();
+            }
+
+            catch (Exception)
+            {
+                throw new KanInteSerializeraException();
+            }
+            return podcastLista;
         }
 
         public void SparaAndringar()
@@ -46,6 +59,21 @@ namespace DataAccessLayer.Repositories
         {
             poddLista[index] = newEntity;
             SparaAndringar();
+        }
+
+        public async Task<List<Avsnitt>> HamtaAvsnitt(string url)
+        {
+            XmlReader xmlLasare = XmlReader.Create(url);
+            SyndicationFeed feed = await Task.Run(() => SyndicationFeed.Load(xmlLasare));
+            List<Avsnitt> allaAvsnitt = new List<Avsnitt>();
+
+            foreach (var i in feed.Items)
+            {
+                Avsnitt avsnitt = new Avsnitt(i.Title.Text, i.Summary.Text);
+                allaAvsnitt.Add(avsnitt);
+            }
+
+            return allaAvsnitt;
         }
 
         public int hamtaIndexAvNamn(string name)
