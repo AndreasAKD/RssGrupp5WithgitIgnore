@@ -44,11 +44,7 @@ namespace DataAccessLayer.Repositories
 
         }
 
-        public void Create(Kategori entity)
-        {
-            kategoriLista.Add(entity);
-            SparaAndringar();
-        }
+    
 
         public void SparaAndringar()
         {
@@ -56,9 +52,9 @@ namespace DataAccessLayer.Repositories
             {
                 serializerForXml.KategoriSerializera(kategoriLista);
             }
-            catch (KanInteSerializeraException)
+            catch (Exception)
             {
-                Console.WriteLine("kunde inte serialize:a category.xml");
+                throw new KanInteSerializeraException();
             }
         }
 

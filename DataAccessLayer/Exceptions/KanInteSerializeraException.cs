@@ -10,7 +10,7 @@ namespace DataAccessLayer.Exceptions
     {
         public KanInteSerializeraException() : base("Kan inte serializera")
         {
-
+            
         }
     }
 }

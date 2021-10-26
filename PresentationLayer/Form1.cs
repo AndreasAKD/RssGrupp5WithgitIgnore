@@ -70,5 +70,10 @@ namespace PresentationLayer
         {
 
         }
+
+        private void btnUppdateraKategorier_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

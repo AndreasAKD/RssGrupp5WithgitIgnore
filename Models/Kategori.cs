@@ -14,5 +14,10 @@ namespace Models
         {
             KategoriNamn = kategoriNamn;
         }
+
+        public Kategori()
+        {
+
+        }
     }
 }
