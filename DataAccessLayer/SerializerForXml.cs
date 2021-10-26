@@ -13,18 +13,18 @@ namespace DataAccessLayer
     {
         public void PodSerializera(List<Pod> poddar)
         {
-            try
-            {
+            //try
+            //{
                 XmlSerializer xmlSerializer = new XmlSerializer(poddar.GetType());
                 using (FileStream skapaXmlPod = new FileStream("podcasts.xml", FileMode.Create, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(skapaXmlPod, poddar);
                 }
-            }
-            catch (Exception)
-            {
-                throw new KanInteSerializeraException();
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new KanInteSerializeraException();
+            //}
 
         }
 

@@ -26,6 +26,7 @@ namespace PresentationLayer
 
             kategoriController = new KategoriController();
             hamtaKategorier();
+           
 
             cbUppdateringsfrekvens.Items.Add("10");
 
@@ -86,6 +87,7 @@ namespace PresentationLayer
             {
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 FyllPodcasts();
+                _ = useDelay();
             }
 
             else
@@ -94,14 +96,20 @@ namespace PresentationLayer
             }
         }
 
+        async Task useDelay()
+        {
+            await Task.Delay(200);
+            FyllPodcasts();
+        }
+
         private void FyllPodcasts()
         {
             dataGridAllaPoddar.Rows.Clear();
             dataGridAvsnitt.Rows.Clear();
             foreach (var pod in podKontroller.HamtaAllaPodcasts())
             {
-                var antalAvsnitt = pod.AntalAvsnitt.Count.ToString();
-                dataGridAllaPoddar.Rows.Add(pod.Namn, pod.AntalAvsnitt, pod.Kategori, pod.UppdateringsFrekvens, "0");
+                var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
+                dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens, "0");
             }
 
         }
