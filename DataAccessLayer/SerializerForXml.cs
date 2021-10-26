@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using DataAccessLayer.Exceptions;
 using Models;
+using DataAccessLayer.Exceptions;
 
 
 
@@ -52,15 +52,15 @@ namespace DataAccessLayer
         {
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Kategori>));
-                using (FileStream skapaXmlKategori = new FileStream("kategorier.xml", FileMode.Create, FileAccess.Write))
+                XmlSerializer xmlSerializer = new XmlSerializer(kategoriLista.GetType());
+            using (FileStream xmlKategori = new FileStream("kategorier.xml", FileMode.Create, FileAccess.Write))
                 {
-                    xmlSerializer.Serialize(skapaXmlKategori, kategoriLista);
+                    xmlSerializer.Serialize(xmlKategori, kategoriLista);
                 }
             }
             catch (Exception)
             {
-                //throw new SerializerException("kategorier.xml", "Kan inte deserializera xml för kategori");
+                throw new KanInteSerializeraException();
             }
 
         }
