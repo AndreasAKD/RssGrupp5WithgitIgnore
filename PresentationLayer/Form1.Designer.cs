@@ -199,6 +199,7 @@ namespace PresentationLayer
             this.btnLaggTillPodd.TabIndex = 54;
             this.btnLaggTillPodd.Text = "Lägg till...";
             this.btnLaggTillPodd.UseVisualStyleBackColor = true;
+            this.btnLaggTillPodd.Click += new System.EventHandler(this.btnLaggTillPodd_Click);
             // 
             // textBoxKategorier
             // 

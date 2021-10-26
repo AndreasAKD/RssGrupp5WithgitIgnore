@@ -27,7 +27,21 @@ namespace DataAccessLayer
         }
 
 
+        public bool HarComboboxVarde(ComboBox cb)
+        {
+            bool cbVarde = false;
+            if (cb.SelectedIndex == -1)
+            {
+                cbVarde = false;
 
+            }
+
+            else
+            {
+                cbVarde = true;
+            }
+            return cbVarde;
+        }
 
 
 
