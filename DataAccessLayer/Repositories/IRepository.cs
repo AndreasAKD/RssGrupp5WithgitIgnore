@@ -8,7 +8,7 @@ namespace DataAccessLayer.Repositories
     {
         void Skapa(T entity);
         void TaBort(int index);
-        void Updatera(int index, T newEntity);
+        void UppdateraPodd(int index, T newEntity);
         List<T> HamtaAlla();
 
         int hamtaIndexAvNamn(string name);
