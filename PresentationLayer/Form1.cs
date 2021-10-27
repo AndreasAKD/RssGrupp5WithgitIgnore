@@ -132,7 +132,10 @@ namespace PresentationLayer
 
         private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
         {
-
+            string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+            string uppdateringsfrekvens = dataGridAllaPoddar.CurrentRow.Cells[3].Value.ToString();
+            txtBoxNamn.Text = feedNamn;
+            
             HamtaAvsnittForValdPod();
 
         }
@@ -143,7 +146,7 @@ namespace PresentationLayer
             listBoxAvsnitt.Items.Clear();
             string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
             Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
-            listBoxAvsnitt.Items.Add(valdPodNamn.Namn);
+            
 
             foreach (Avsnitt avsnitt in valdPodNamn.AntalAvsnitt)
             {
@@ -153,9 +156,12 @@ namespace PresentationLayer
 
         private void listBoxAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string valtAvsnitt = listBoxAvsnitt.SelectedItem.ToString();
 
-           
+            string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+            Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
+            
+            textBoxBeskrivning.Text = valdPodNamn.AntalAvsnitt[listBoxAvsnitt.SelectedIndex].AvsnittsBeskrivning;
+
         }
     }
 }

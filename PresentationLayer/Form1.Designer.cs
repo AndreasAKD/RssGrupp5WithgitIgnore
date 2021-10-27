@@ -37,7 +37,7 @@ namespace PresentationLayer
             this.lblLaggTillKategori = new System.Windows.Forms.Label();
             this.lblLaggTillPodd = new System.Windows.Forms.Label();
             this.btnFiltreraKategorier = new System.Windows.Forms.Button();
-            this.richTextBoxBeskrivning = new System.Windows.Forms.RichTextBox();
+            this.textBoxBeskrivning = new System.Windows.Forms.RichTextBox();
             this.btnTaBortKategori = new System.Windows.Forms.Button();
             this.btnUppdateraKategorier = new System.Windows.Forms.Button();
             this.btnNyKategori = new System.Windows.Forms.Button();
@@ -121,13 +121,13 @@ namespace PresentationLayer
             this.btnFiltreraKategorier.Text = "Filtrera";
             this.btnFiltreraKategorier.UseVisualStyleBackColor = true;
             // 
-            // richTextBoxBeskrivning
+            // textBoxBeskrivning
             // 
-            this.richTextBoxBeskrivning.Location = new System.Drawing.Point(817, 540);
-            this.richTextBoxBeskrivning.Name = "richTextBoxBeskrivning";
-            this.richTextBoxBeskrivning.Size = new System.Drawing.Size(276, 237);
-            this.richTextBoxBeskrivning.TabIndex = 62;
-            this.richTextBoxBeskrivning.Text = "";
+            this.textBoxBeskrivning.Location = new System.Drawing.Point(817, 540);
+            this.textBoxBeskrivning.Name = "textBoxBeskrivning";
+            this.textBoxBeskrivning.Size = new System.Drawing.Size(276, 237);
+            this.textBoxBeskrivning.TabIndex = 62;
+            this.textBoxBeskrivning.Text = "";
             // 
             // btnTaBortKategori
             // 
@@ -251,6 +251,7 @@ namespace PresentationLayer
             // 
             // dataGridAllaPoddar
             // 
+            this.dataGridAllaPoddar.AllowUserToAddRows = false;
             this.dataGridAllaPoddar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAllaPoddar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnAntalAvsnitt,
@@ -312,7 +313,7 @@ namespace PresentationLayer
             this.Controls.Add(this.lblLaggTillKategori);
             this.Controls.Add(this.lblLaggTillPodd);
             this.Controls.Add(this.btnFiltreraKategorier);
-            this.Controls.Add(this.richTextBoxBeskrivning);
+            this.Controls.Add(this.textBoxBeskrivning);
             this.Controls.Add(this.btnTaBortKategori);
             this.Controls.Add(this.btnUppdateraKategorier);
             this.Controls.Add(this.btnNyKategori);
@@ -351,7 +352,7 @@ namespace PresentationLayer
         private System.Windows.Forms.Label lblLaggTillKategori;
         private System.Windows.Forms.Label lblLaggTillPodd;
         private System.Windows.Forms.Button btnFiltreraKategorier;
-        private System.Windows.Forms.RichTextBox richTextBoxBeskrivning;
+        private System.Windows.Forms.RichTextBox textBoxBeskrivning;
         private System.Windows.Forms.Button btnTaBortKategori;
         private System.Windows.Forms.Button btnUppdateraKategorier;
         private System.Windows.Forms.Button btnNyKategori;
