@@ -96,7 +96,7 @@ namespace PresentationLayer
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
 
                 //FyllPodcasts();
-                _ = useDelay();
+                _ = forDrojning();
 
             }
 
@@ -145,17 +145,17 @@ namespace PresentationLayer
             Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
             listBoxAvsnitt.Items.Add(valdPodNamn.Namn);
 
-
-
             foreach (Avsnitt avsnitt in valdPodNamn.AntalAvsnitt)
             {
                 listBoxAvsnitt.Items.Add(avsnitt.Namn);
-
             }
-
         }
 
+        private void listBoxAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string valtAvsnitt = listBoxAvsnitt.SelectedItem.ToString();
 
-
+           
+        }
     }
 }

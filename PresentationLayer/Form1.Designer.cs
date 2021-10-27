@@ -181,7 +181,6 @@ namespace PresentationLayer
             this.btnUppdateraPoddlsita.TabIndex = 56;
             this.btnUppdateraPoddlsita.Text = "Uppdatera";
             this.btnUppdateraPoddlsita.UseVisualStyleBackColor = true;
-
             // 
             // btnTaBortPodd
             // 
@@ -191,7 +190,6 @@ namespace PresentationLayer
             this.btnTaBortPodd.TabIndex = 55;
             this.btnTaBortPodd.Text = "Ta Bort...";
             this.btnTaBortPodd.UseVisualStyleBackColor = true;
-            this.btnTaBortPodd.Click += new System.EventHandler(this.btnTaBortPodd_Click);
             // 
             // btnLaggTillPodd
             // 
@@ -264,13 +262,7 @@ namespace PresentationLayer
             this.dataGridAllaPoddar.Name = "dataGridAllaPoddar";
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
-
-            this.dataGridAllaPoddar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAllaPoddar_CellContentClick);
             this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
-
-
-
-
             // 
             // columnAntalAvsnitt
             // 
@@ -302,12 +294,12 @@ namespace PresentationLayer
             this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.listBoxAvsnitt.FormattingEnabled = true;
             this.listBoxAvsnitt.ItemHeight = 17;
-
             this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 517);
             this.listBoxAvsnitt.Name = "listBoxAvsnitt";
             this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 191);
             this.listBoxAvsnitt.TabIndex = 70;
- 
+            this.listBoxAvsnitt.SelectedIndexChanged += new System.EventHandler(this.listBoxAvsnitt_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
