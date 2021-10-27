@@ -3,7 +3,7 @@ using DataAccessLayer.Repositories;
 using Models;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +25,8 @@ namespace BusinessLayer
             if (validering.ArStrangNullEllerTom(namn) && validering.ArStrangNullEllerTom(url))
             {
                 List<Avsnitt> avsnitt = await podcastRepo.HamtaAvsnitt(url);
-                Pod podcast = new Pod(namn, url, updIntervall, kategori, avsnitt);
+                DateTime uppdateringsTid = DateTime.Now;
+                Pod podcast = new Pod(namn, url, updIntervall, uppdateringsTid, kategori, avsnitt);
                 podcastRepo.Skapa(podcast);
             }
         }
