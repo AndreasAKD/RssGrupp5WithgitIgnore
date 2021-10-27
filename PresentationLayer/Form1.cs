@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DataAccessLayer;
+using Models;
 
 namespace PresentationLayer
 {
@@ -25,7 +26,10 @@ namespace PresentationLayer
             InitializeComponent();
 
             kategoriController = new KategoriController();
+            podKontroller = new PodcastController();
             hamtaKategorier();
+            FyllPodcasts();
+            
 
 
 
@@ -33,7 +37,7 @@ namespace PresentationLayer
 
 
 
-            4795ee1e95985182929a151669a3ed669aa27922
+
             validering = new Validering();
             podKontroller = new PodcastController();
         }
@@ -89,7 +93,7 @@ namespace PresentationLayer
             {
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 FyllPodcasts();
-                _ = useDelay();
+                _ = forDrojning();
             }
 
             else
@@ -98,7 +102,7 @@ namespace PresentationLayer
             }
         }
 
-        async Task useDelay()
+        async Task forDrojning()
         {
             await Task.Delay(200);
             FyllPodcasts();
@@ -107,13 +111,56 @@ namespace PresentationLayer
         private void FyllPodcasts()
         {
             dataGridAllaPoddar.Rows.Clear();
-            dataGridAvsnitt.Rows.Clear();
+            listBoxAvsnitt.Items.Clear();
             foreach (var pod in podKontroller.HamtaAllaPodcasts())
             {
-                var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
-                dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens, "0");
+                if (pod != null)
+                {
+                    var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
+                    dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens, "0");
+                }
             }
 
+        }
+
+        private void btnTaBortPodd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
+        {
+
+            HamtaAvsnittForValdPod();
+          
+        }
+
+        
+
+        private void HamtaAvsnittForValdPod()
+        {
+            listBoxAvsnitt.Items.Clear();
+            string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+            Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
+            listBoxAvsnitt.Items.Add(valdPodNamn.Namn);
+
+
+
+            foreach (Avsnitt avsnitt in valdPodNamn.AntalAvsnitt)
+            {
+                listBoxAvsnitt.Items.Add(avsnitt.Namn);
+                
+            }
+            
+        }
+
+        private string getSelectedPodName()
+        {
+            int selectedrowindex = dataGridAllaPoddar.SelectedCells[1].RowIndex;
+            DataGridViewRow selectedRow = dataGridAllaPoddar.Rows[selectedrowindex];
+            string selectedPod = Convert.ToString(selectedRow.Cells[1].Value);
+
+            return selectedPod;
         }
 
     }
