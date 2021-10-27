@@ -338,7 +338,12 @@ namespace PresentationLayer
 
         }
 
-    
+        private void btnUppdateraPoddlsita_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
 

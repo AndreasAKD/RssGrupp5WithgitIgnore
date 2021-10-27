@@ -29,7 +29,7 @@ namespace PresentationLayer
             podKontroller = new PodcastController();
             hamtaKategorier();
             FyllPodcasts();
-            
+
 
 
 
@@ -132,10 +132,10 @@ namespace PresentationLayer
         {
 
             HamtaAvsnittForValdPod();
-          
+
         }
 
-        
+
 
         private void HamtaAvsnittForValdPod()
         {
@@ -149,9 +149,9 @@ namespace PresentationLayer
             foreach (Avsnitt avsnitt in valdPodNamn.AntalAvsnitt)
             {
                 listBoxAvsnitt.Items.Add(avsnitt.Namn);
-                
+
             }
-            
+
         }
 
         private string getSelectedPodName()
