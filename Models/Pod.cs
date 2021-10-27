@@ -7,6 +7,7 @@ namespace Models
     {
         public string AngivetUrl { get; set; }
         public string UppdateringsFrekvens { get; set; }
+        public DateTime UppdateringsTid { get; set; }
         public string Kategori { get; set; }
         public List<Avsnitt> AntalAvsnitt { get; set; }
 
@@ -20,6 +21,12 @@ namespace Models
         }
         public Pod() {  }
 
-
+        public bool KollaUppdatering
+        {
+            get
+            {
+                return UppdateringsTid <= DateTime.Now;
+            }
+        }
     }
 }

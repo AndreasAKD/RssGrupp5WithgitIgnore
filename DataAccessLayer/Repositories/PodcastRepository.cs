@@ -57,8 +57,12 @@ namespace DataAccessLayer.Repositories
 
         public void Updatera(int index, Pod newEntity)
         {
-            poddLista[index] = newEntity;
-            SparaAndringar();
+            if (index >= 0)
+            {
+                poddLista[index] = newEntity;
+                SparaAndringar();
+            }
+
         }
 
         public async Task<List<Avsnitt>> HamtaAvsnitt(string url)
@@ -76,9 +80,10 @@ namespace DataAccessLayer.Repositories
             return allaAvsnitt;
         }
 
-        public int hamtaIndexAvNamn(string name)
+        public int hamtaIndexAvNamn(string namn)
         {
-            throw new NotImplementedException();
+            int hamtatIndex = HamtaAlla().FindIndex(p => p.Namn.Equals(namn));
+            return hamtatIndex;
         }
     }
 }
