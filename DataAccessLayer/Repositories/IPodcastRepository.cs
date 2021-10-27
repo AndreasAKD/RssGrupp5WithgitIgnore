@@ -9,5 +9,6 @@ namespace DataAccessLayer.Repositories
 {
     public interface IPodcastRepository<T> : IRepository<T> where T : Pod
     {
+
     }
 }

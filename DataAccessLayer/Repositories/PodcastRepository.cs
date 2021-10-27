@@ -55,7 +55,7 @@ namespace DataAccessLayer.Repositories
             dataHanterare.PodSerializera(poddLista);
         }
 
-        public void Updatera(int index, Pod newEntity)
+        public void UppdateraPodd(int index, Pod newEntity)
         {
             if (index >= 0)
             {

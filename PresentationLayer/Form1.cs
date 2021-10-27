@@ -18,28 +18,26 @@ namespace PresentationLayer
         KategoriController kategoriController;
         Validering validering;
         PodcastController podKontroller;
+        Timer enTimer = new Timer();
 
         public Form1()
 
         {
 
             InitializeComponent();
-
             kategoriController = new KategoriController();
+            podKontroller = new PodcastController();
+            cbUppdateringsfrekvens.Items.Add("10");
+            validering = new Validering();
             podKontroller = new PodcastController();
             hamtaKategorier();
             FyllPodcasts();
 
-
-
-
-            cbUppdateringsfrekvens.Items.Add("10");
-
-
-
-
-            validering = new Validering();
-            podKontroller = new PodcastController();
+            enTimer.Interval = 10000;
+            enTimer.Tick += enTimer_Tick;
+            //enTimer.Start();
+            // Vid timer så kastas felet "Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek."
+            //När den ska uppdatera podcasten i metoden "UppdateraPodd" i PodcastRepository
         }
 
         private void btnNyKategori_Click(object sender, EventArgs e)
@@ -47,6 +45,10 @@ namespace PresentationLayer
             kategoriController.skapaKategori(textBoxKategorier.Text);
             hamtaKategorier();
             textBoxKategorier.Clear();
+        }
+        private void enTimer_Tick(object sender, EventArgs e)
+        {
+            podKontroller.KollaPodcastUppdatering();
         }
 
         private void hamtaKategorier()

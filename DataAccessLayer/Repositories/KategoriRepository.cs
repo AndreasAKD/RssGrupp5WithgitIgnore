@@ -74,7 +74,7 @@ namespace DataAccessLayer.Repositories
             SparaAndringar();
         }
 
-        public void Updatera(int index, Kategori newEntity)
+        public void UppdateraPodd(int index, Kategori newEntity)
         {
             if (index >= 0)
             {
