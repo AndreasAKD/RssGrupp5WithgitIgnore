@@ -13,26 +13,26 @@ namespace DataAccessLayer
     {
         public void PodSerializera(List<Pod> poddar)
         {
-            //try
-            //{
+            try
+            {
                 XmlSerializer xmlSerializer = new XmlSerializer(poddar.GetType());
                 using (FileStream skapaXmlPod = new FileStream("podcasts.xml", FileMode.Create, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(skapaXmlPod, poddar);
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new KanInteSerializeraException();
-            //}
+            }
+            catch (Exception)
+            {
+                throw new KanInteSerializeraException();
+            }
 
         }
 
 
         public List<Pod> PodDeserializera()
         {
-            //try
-            //{
+            try
+            {
                 List<Pod> poddLista;
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Pod>));
                 using (FileStream oppnaXml = new FileStream("podcasts.xml", FileMode.Open, FileAccess.Read))
@@ -40,12 +40,12 @@ namespace DataAccessLayer
                     poddLista = (List<Pod>)xmlSerializer.Deserialize(oppnaXml);
                 }
                 return poddLista;
-            //}
-            //catch (Exception)
-            //{
-            //    throw new KanInteSerializeraException();
+            }
+            catch (Exception)
+            {
+                throw new KanInteSerializeraException();
 
-            //}
+            }
         }
 
         public void KategoriSerializera(List<Kategori> kategoriLista)

@@ -32,11 +32,12 @@ namespace PresentationLayer
 
 
 
+
             cbUppdateringsfrekvens.Items.Add("10");
 
 
 
-            
+
             validering = new Validering();
             podKontroller = new PodcastController();
         }
@@ -93,8 +94,10 @@ namespace PresentationLayer
                 dataGridAllaPoddar.Rows.Clear();
                
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
+
                 //FyllPodcasts();
                 _ = useDelay();
+
             }
 
             else
@@ -103,7 +106,7 @@ namespace PresentationLayer
             }
         }
 
-        async Task useDelay()
+        async Task forDrojning()
         {
             await Task.Delay(200);
             FyllPodcasts();
@@ -112,14 +115,20 @@ namespace PresentationLayer
         private void FyllPodcasts()
         {
             dataGridAllaPoddar.Rows.Clear();
+
             
+
             foreach (var pod in podKontroller.HamtaAllaPodcasts())
             {
-                var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
-                dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens, "0");
+                if (pod != null)
+                {
+                    var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
+                    dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens, "0");
+                }
             }
 
         }
+
 
         private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
         {
@@ -127,6 +136,7 @@ namespace PresentationLayer
             HamtaAvsnittForValdPod();
 
         }
+
 
         private void HamtaAvsnittForValdPod()
         {
@@ -145,9 +155,7 @@ namespace PresentationLayer
 
         }
 
-        private void dataGridAllaPoddar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+
     }
 }

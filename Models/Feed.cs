@@ -9,7 +9,9 @@ namespace Models
     public abstract class Feed
     {
 
+       
         public string Namn { get; set; }
+        public string Url { get; set; }
 
         public Feed(string namn)
         {

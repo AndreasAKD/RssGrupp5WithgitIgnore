@@ -8,7 +8,7 @@ namespace Models
 {
     public class Avsnitt : Feed
     {
-
+        
         public string AvsnittsBeskrivning { get; set; }
 
         public Avsnitt(string namn, string beskrivning) : base(namn)
