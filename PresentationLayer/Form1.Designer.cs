@@ -146,7 +146,6 @@ namespace PresentationLayer
             this.btnUppdateraKategorier.TabIndex = 60;
             this.btnUppdateraKategorier.Text = "Uppdatera";
             this.btnUppdateraKategorier.UseVisualStyleBackColor = true;
-
             // 
             // btnNyKategori
             // 
@@ -265,7 +264,13 @@ namespace PresentationLayer
             this.dataGridAllaPoddar.Name = "dataGridAllaPoddar";
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
+
+            this.dataGridAllaPoddar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAllaPoddar_CellContentClick);
             this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
+
+
+
+
             // 
             // columnAntalAvsnitt
             // 
@@ -297,11 +302,12 @@ namespace PresentationLayer
             this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.listBoxAvsnitt.FormattingEnabled = true;
             this.listBoxAvsnitt.ItemHeight = 17;
-            this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 540);
+
+            this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 517);
             this.listBoxAvsnitt.Name = "listBoxAvsnitt";
             this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 191);
-            this.listBoxAvsnitt.TabIndex = 69;
-            // 
+            this.listBoxAvsnitt.TabIndex = 70;
+ 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

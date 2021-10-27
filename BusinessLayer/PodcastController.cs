@@ -40,9 +40,6 @@ namespace BusinessLayer
             return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.Namn, namn, StringComparison.OrdinalIgnoreCase)).First();
         }
 
-        //public Feed GetFeedURL(string namn)
-        //{
-        //    return podcastRepo.HamtaAlla().Where(feed => string.Equals(feed.AngivetUrl, , StringComparison.OrdinalIgnoreCase)).First();
-        //}
+
     }
 }

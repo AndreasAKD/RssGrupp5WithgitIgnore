@@ -91,9 +91,13 @@ namespace PresentationLayer
         {
             if (validering.HarComboboxVarde(cbValdKategori))
             {
+                dataGridAllaPoddar.Rows.Clear();
+               
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
-                FyllPodcasts();
-                _ = forDrojning();
+
+                //FyllPodcasts();
+                _ = useDelay();
+
             }
 
             else
@@ -111,7 +115,9 @@ namespace PresentationLayer
         private void FyllPodcasts()
         {
             dataGridAllaPoddar.Rows.Clear();
-            listBoxAvsnitt.Items.Clear();
+
+            
+
             foreach (var pod in podKontroller.HamtaAllaPodcasts())
             {
                 if (pod != null)
@@ -123,10 +129,6 @@ namespace PresentationLayer
 
         }
 
-        private void btnTaBortPodd_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
         {
@@ -134,7 +136,6 @@ namespace PresentationLayer
             HamtaAvsnittForValdPod();
 
         }
-
 
 
         private void HamtaAvsnittForValdPod()
@@ -154,14 +155,7 @@ namespace PresentationLayer
 
         }
 
-        private string getSelectedPodName()
-        {
-            int selectedrowindex = dataGridAllaPoddar.SelectedCells[1].RowIndex;
-            DataGridViewRow selectedRow = dataGridAllaPoddar.Rows[selectedrowindex];
-            string selectedPod = Convert.ToString(selectedRow.Cells[1].Value);
 
-            return selectedPod;
-        }
 
     }
 }
