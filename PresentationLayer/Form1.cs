@@ -90,6 +90,8 @@ namespace PresentationLayer
         {
             if (validering.HarComboboxVarde(cbValdKategori))
             {
+                dataGridAllaPoddar.Rows.Clear();
+               
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 //FyllPodcasts();
                 _ = useDelay();
