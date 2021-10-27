@@ -91,7 +91,7 @@ namespace PresentationLayer
             if (validering.HarComboboxVarde(cbValdKategori))
             {
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
-                FyllPodcasts();
+                //FyllPodcasts();
                 _ = useDelay();
             }
 
