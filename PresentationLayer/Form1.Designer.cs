@@ -146,7 +146,7 @@ namespace PresentationLayer
             this.btnUppdateraKategorier.TabIndex = 60;
             this.btnUppdateraKategorier.Text = "Uppdatera";
             this.btnUppdateraKategorier.UseVisualStyleBackColor = true;
-            this.btnUppdateraKategorier.Click += new System.EventHandler(this.btnUppdateraKategorier_Click);
+
             // 
             // btnNyKategori
             // 
