@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DataAccessLayer;
+using Models;
 
 namespace PresentationLayer
 {
@@ -25,7 +26,9 @@ namespace PresentationLayer
             InitializeComponent();
 
             kategoriController = new KategoriController();
+            podKontroller = new PodcastController();
             hamtaKategorier();
+            FyllPodcasts();
 
 
 
@@ -107,7 +110,7 @@ namespace PresentationLayer
         private void FyllPodcasts()
         {
             dataGridAllaPoddar.Rows.Clear();
-            dataGridAvsnitt.Rows.Clear();
+            
             foreach (var pod in podKontroller.HamtaAllaPodcasts())
             {
                 var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
@@ -116,5 +119,33 @@ namespace PresentationLayer
 
         }
 
+        private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
+        {
+
+            HamtaAvsnittForValdPod();
+
+        }
+
+        private void HamtaAvsnittForValdPod()
+        {
+            listBoxAvsnitt.Items.Clear();
+            string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+            Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
+            listBoxAvsnitt.Items.Add(valdPodNamn.Namn);
+
+
+
+            foreach (Avsnitt avsnitt in valdPodNamn.AntalAvsnitt)
+            {
+                listBoxAvsnitt.Items.Add(avsnitt.Namn);
+
+            }
+
+        }
+
+        private void dataGridAllaPoddar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -48,8 +48,6 @@ namespace PresentationLayer
             this.btnLaggTillPodd = new System.Windows.Forms.Button();
             this.textBoxKategorier = new System.Windows.Forms.TextBox();
             this.listBoxKategorier = new System.Windows.Forms.ListBox();
-            this.dataGridAvsnitt = new System.Windows.Forms.DataGridView();
-            this.columnAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblNamn = new System.Windows.Forms.Label();
             this.textBoxURL = new System.Windows.Forms.TextBox();
@@ -60,7 +58,7 @@ namespace PresentationLayer
             this.columnKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnUppdateringsIntervall = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnFinnsNyaAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvsnitt)).BeginInit();
+            this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllaPoddar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +146,6 @@ namespace PresentationLayer
             this.btnUppdateraKategorier.TabIndex = 60;
             this.btnUppdateraKategorier.Text = "Uppdatera";
             this.btnUppdateraKategorier.UseVisualStyleBackColor = true;
-
             // 
             // btnNyKategori
             // 
@@ -221,22 +218,6 @@ namespace PresentationLayer
             this.listBoxKategorier.TabIndex = 52;
             this.listBoxKategorier.SelectedIndexChanged += new System.EventHandler(this.listBoxKategorier_SelectedIndexChanged);
             // 
-            // dataGridAvsnitt
-            // 
-            this.dataGridAvsnitt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAvsnitt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnAvsnitt});
-            this.dataGridAvsnitt.Location = new System.Drawing.Point(137, 517);
-            this.dataGridAvsnitt.Name = "dataGridAvsnitt";
-            this.dataGridAvsnitt.Size = new System.Drawing.Size(624, 260);
-            this.dataGridAvsnitt.TabIndex = 51;
-            // 
-            // columnAvsnitt
-            // 
-            this.columnAvsnitt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnAvsnitt.HeaderText = "Avsnitt";
-            this.columnAvsnitt.Name = "columnAvsnitt";
-            // 
             // lblURL
             // 
             this.lblURL.AutoSize = true;
@@ -282,6 +263,11 @@ namespace PresentationLayer
             this.dataGridAllaPoddar.Name = "dataGridAllaPoddar";
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
+            this.dataGridAllaPoddar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAllaPoddar_CellContentClick);
+            this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
+
+
+
             // 
             // columnAntalAvsnitt
             // 
@@ -308,11 +294,22 @@ namespace PresentationLayer
             this.columnFinnsNyaAvsnitt.HeaderText = "Nya avsnitt";
             this.columnFinnsNyaAvsnitt.Name = "columnFinnsNyaAvsnitt";
             // 
+            // listBoxAvsnitt
+            // 
+            this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.listBoxAvsnitt.FormattingEnabled = true;
+            this.listBoxAvsnitt.ItemHeight = 17;
+            this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 517);
+            this.listBoxAvsnitt.Name = "listBoxAvsnitt";
+            this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 191);
+            this.listBoxAvsnitt.TabIndex = 70;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 828);
+            this.Controls.Add(this.listBoxAvsnitt);
             this.Controls.Add(this.lblAvsnitt);
             this.Controls.Add(this.lblBeskrivning);
             this.Controls.Add(this.lblKategorier);
@@ -330,7 +327,6 @@ namespace PresentationLayer
             this.Controls.Add(this.btnLaggTillPodd);
             this.Controls.Add(this.textBoxKategorier);
             this.Controls.Add(this.listBoxKategorier);
-            this.Controls.Add(this.dataGridAvsnitt);
             this.Controls.Add(this.lblURL);
             this.Controls.Add(this.lblNamn);
             this.Controls.Add(this.textBoxURL);
@@ -338,7 +334,6 @@ namespace PresentationLayer
             this.Controls.Add(this.dataGridAllaPoddar);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvsnitt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllaPoddar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -371,8 +366,6 @@ namespace PresentationLayer
         private System.Windows.Forms.Button btnLaggTillPodd;
         private System.Windows.Forms.TextBox textBoxKategorier;
         private System.Windows.Forms.ListBox listBoxKategorier;
-        private System.Windows.Forms.DataGridView dataGridAvsnitt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnAvsnitt;
         private System.Windows.Forms.Label lblURL;
         private System.Windows.Forms.Label lblNamn;
         private System.Windows.Forms.TextBox textBoxURL;
@@ -383,6 +376,7 @@ namespace PresentationLayer
         private System.Windows.Forms.DataGridViewTextBoxColumn columnKategori;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnUppdateringsIntervall;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnFinnsNyaAvsnitt;
+        private System.Windows.Forms.ListBox listBoxAvsnitt;
     }
 }
 
