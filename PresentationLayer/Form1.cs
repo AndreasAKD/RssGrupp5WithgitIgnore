@@ -85,22 +85,6 @@ namespace PresentationLayer
 
         }
 
-        private string getSelectedCat()
-        {
-            string selectedCat = "";
-
-        //private string getSelectedCat()
-        //{
-        //    string selectedCat = "";
-
-
-        //    if (listBoxKategorier.SelectedIndex != -1)
-        //    {
-        //        selectedCat = listBoxKategorier.SelectedItem.ToString();
-        //    }
-
-        //    return selectedCat;
-        //}
 
         private void listBoxKategorier_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -226,7 +210,8 @@ namespace PresentationLayer
             catch (InvalidOperationException)
             {
                 MessageBox.Show("Kan inte ta bort vald rad, välj raden och försök igen");
-
+            }
+        }
         private void btnUppdateraKategorier_Click(object sender, EventArgs e)
         {
             if (listBoxKategorier.SelectedIndex >= 0 && validering.ArStrangNullEllerTom(textBoxKategorier.Text))
