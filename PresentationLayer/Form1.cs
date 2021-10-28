@@ -74,18 +74,6 @@ namespace PresentationLayer
             textBoxKategorier.Text = ("");
         }
 
-
-
-        private void fyllCbUppdatering()
-        {
-            cbUppdateringsfrekvens.Items.Add("10");
-            cbUppdateringsfrekvens.Items.Add("30");
-            cbUppdateringsfrekvens.Items.Add("60");
-            cbUppdateringsfrekvens.SelectedIndex = 0;
-
-        }
-
-
         //private string getSelectedCat()
         //{
         //    string selectedCat = "";
@@ -97,7 +85,6 @@ namespace PresentationLayer
 
         //    return selectedCat;
         //}
-
 
         private void listBoxKategorier_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -195,15 +182,7 @@ namespace PresentationLayer
 
 
             }
-
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Kan inte ta bort vald rad, välj raden och försök igen");
-            }
         }
-
-        }
-
 
         private void btnUppdateraKategorier_Click(object sender, EventArgs e)
         {
