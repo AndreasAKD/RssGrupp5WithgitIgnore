@@ -46,6 +46,10 @@ namespace BusinessLayer
             return index;
         }
 
+        public void UppdateraKategori (int index, Kategori kategori)
+        {
+            kategoriRepository.UppdateraPodd(index, kategori);
+        }
 
     }
 }
