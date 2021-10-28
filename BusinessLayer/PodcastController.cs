@@ -77,5 +77,7 @@ namespace BusinessLayer
             int index = podcastRepo.hamtaIndexAvNamn(namn);
             return index;
         }
+
+       
     }
 }

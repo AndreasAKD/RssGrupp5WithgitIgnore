@@ -74,17 +74,17 @@ namespace PresentationLayer
             textBoxKategorier.Text = ("");
         }
 
-        private string getSelectedCat()
-        {
-            string selectedCat = "";
+        //private string getSelectedCat()
+        //{
+        //    string selectedCat = "";
 
-            if (listBoxKategorier.SelectedIndex != -1)
-            {
-                selectedCat = listBoxKategorier.SelectedItem.ToString();
-            }
+        //    if (listBoxKategorier.SelectedIndex != -1)
+        //    {
+        //        selectedCat = listBoxKategorier.SelectedItem.ToString();
+        //    }
 
-            return selectedCat;
-        }
+        //    return selectedCat;
+        //}
 
         private void listBoxKategorier_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -183,6 +183,32 @@ namespace PresentationLayer
 
                 DateTime uppdatering = DateTime.Now;
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
+                FyllPodcasts();
+                _ = forDrojning();
+
+            }
+        }
+
+        private void btnUppdateraKategorier_Click(object sender, EventArgs e)
+        {
+            if (listBoxKategorier.SelectedIndex >= 0 && validering.ArStrangNullEllerTom(textBoxKategorier.Text))
+            {
+               string nyttKatNamn = textBoxKategorier.Text;
+               string valdKategori = listBoxKategorier.SelectedItem.ToString();
+
+                int katIndex = kategoriController.hamtaKategoriIndex(valdKategori);
+                Kategori nyKategori = new Kategori(nyttKatNamn);
+                var poddarSomSkaUppdateras = podKontroller.HamtaAllaPodcasts().Where(pod => String.Equals(pod.Kategori, valdKategori, StringComparison.OrdinalIgnoreCase));
+
+                kategoriController.UppdateraKategori(katIndex, nyKategori);
+
+                foreach (Pod pod in poddarSomSkaUppdateras)
+                {
+                    int index = podKontroller.HamtaIndexMedNamn(pod.Namn);
+                    podKontroller.UppdateraPodcast(index, pod.Namn, pod.AngivetUrl, pod.UppdateringsFrekvens, pod.TidForUppdatering, nyttKatNamn);
+                }
+                
+                hamtaKategorier();
                 FyllPodcasts();
                 _ = forDrojning();
 
