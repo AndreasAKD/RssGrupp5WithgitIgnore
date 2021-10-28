@@ -43,9 +43,9 @@ namespace DataAccessLayer.Repositories
 
             try
             {
-
-                podcastLista = dataHanterare.PodDeserializera();
-
+                
+                    podcastLista = dataHanterare.PodDeserializera();
+                
         }
 
             catch (Exception)
