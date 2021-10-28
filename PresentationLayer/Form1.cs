@@ -35,9 +35,8 @@ namespace PresentationLayer
 
             enTimer.Interval = 10000;
             enTimer.Tick += enTimer_Tick;
-            //enTimer.Start();
-            // Vid timer så kastas felet "Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek."
-            //När den ska uppdatera podcasten i metoden "UppdateraPodd" i PodcastRepository
+            enTimer.Start();
+            
         }
 
         private void btnNyKategori_Click(object sender, EventArgs e)
@@ -49,6 +48,7 @@ namespace PresentationLayer
         private void enTimer_Tick(object sender, EventArgs e)
         {
             podKontroller.KollaPodcastUppdatering();
+            FyllPodcasts();
         }
 
         private void hamtaKategorier()
@@ -93,10 +93,10 @@ namespace PresentationLayer
         {
             if (validering.HarComboboxVarde(cbValdKategori))
             {
-                dataGridAllaPoddar.Rows.Clear();
+                
                
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
-
+                dataGridAllaPoddar.Rows.Clear();
                 //FyllPodcasts();
                 _ = forDrojning();
 
