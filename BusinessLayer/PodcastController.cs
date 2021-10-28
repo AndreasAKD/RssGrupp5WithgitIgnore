@@ -33,14 +33,7 @@ namespace BusinessLayer
 
         public async void UppdateraPodcast(string namn)
         {
-
-            HamtaFeed(namn).TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
-
-
-            //HamtaFeed(namn).TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
-
             Pod uppdateradPodcast = HamtaFeed(namn);
-
             int indexAvPodcast = podcastRepo.hamtaIndexAvNamn(namn);
 
             uppdateradPodcast.TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
@@ -50,7 +43,8 @@ namespace BusinessLayer
 
         }
 
-        public async void UppdateraPodcast(int index, string nyttNamn, string nyttUrl, string nyUpdFrekvens, DateTime nyUppdatering, string nyKategori) {
+        public async void UppdateraPodcast(int index, string nyttNamn, string nyttUrl, string nyUpdFrekvens, DateTime nyUppdatering, string nyKategori)
+        {
 
             List<Avsnitt> avsnitt = await podcastRepo.HamtaAvsnitt(nyttUrl);
             Pod nyPodcast = new Pod(nyttNamn, nyttUrl, nyUpdFrekvens, nyUppdatering, nyKategori, avsnitt);
@@ -92,12 +86,10 @@ namespace BusinessLayer
             return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.Namn, namn, StringComparison.OrdinalIgnoreCase)).First();
         }
 
-        public int HamtaIndexMedNamn (string namn)
+        public int HamtaIndexMedNamn(string namn)
         {
             int index = podcastRepo.hamtaIndexAvNamn(namn);
             return index;
         }
-
-
     }
 }
