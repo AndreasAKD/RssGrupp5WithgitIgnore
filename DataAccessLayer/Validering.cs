@@ -33,7 +33,7 @@ namespace DataAccessLayer
             if (cb.SelectedIndex == -1)
             {
                 cbVarde = false;
-
+                MessageBox.Show("Se till att välja både en kategori och uppdateringsfrekvens!");
             }
 
             else
@@ -43,7 +43,13 @@ namespace DataAccessLayer
             return cbVarde;
         }
 
+        public bool PoddnamnFinnsRedan(string namn)
+        {
+            bool namnFinns = false;
 
+
+            return namnFinns;
+        }
 
 
     }
