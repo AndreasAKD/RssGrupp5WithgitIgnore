@@ -34,7 +34,9 @@ namespace BusinessLayer
         public void UppdateraPodcast(string namn)
         {
             HamtaFeed(namn).TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
+            
             Pod uppdateradPodcast = HamtaFeed(namn);
+            
             int indexAvPodcast = podcastRepo.hamtaIndexAvNamn(namn);
             podcastRepo.UppdateraPodd(indexAvPodcast, uppdateradPodcast);
 
@@ -45,6 +47,20 @@ namespace BusinessLayer
             List<Avsnitt> avsnitt = await podcastRepo.HamtaAvsnitt(nyttUrl);
             Pod nyPodcast = new Pod(nyttNamn, nyttUrl, nyUpdFrekvens, nyUppdatering, nyKategori, avsnitt);
             podcastRepo.UppdateraPodd(index, nyPodcast);
+        }
+
+        public void TaBortPod(string namn)
+        {
+            int taBortIndex = -1;
+            for (int i = 0; i < podcastRepo.HamtaAlla().Count; i++)
+            {
+                if (string.Equals(podcastRepo.HamtaAlla()[i].Namn, namn, StringComparison.OrdinalIgnoreCase))
+                    taBortIndex = i;
+            }
+
+            if (taBortIndex > -1)
+                podcastRepo.TaBort(taBortIndex);
+
         }
 
         public void KollaPodcastUppdatering()

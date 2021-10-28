@@ -27,13 +27,13 @@ namespace PresentationLayer
             InitializeComponent();
             kategoriController = new KategoriController();
             podKontroller = new PodcastController();
-            cbUppdateringsfrekvens.Items.Add("10");
             validering = new Validering();
             podKontroller = new PodcastController();
+            fyllCbUppdatering();
             hamtaKategorier();
             FyllPodcasts();
 
-            enTimer.Interval = 100000;
+            enTimer.Interval = 1000000;
             enTimer.Tick += enTimer_Tick;
 
             enTimer.Start();
@@ -50,6 +50,7 @@ namespace PresentationLayer
         private void enTimer_Tick(object sender, EventArgs e)
         {
             podKontroller.KollaPodcastUppdatering();
+            FyllPodcasts();
             _ = forDrojning();
         }
 
@@ -72,6 +73,15 @@ namespace PresentationLayer
         private void kategoriLista_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxKategorier.Text = ("");
+        }
+
+        private void fyllCbUppdatering()
+        {
+            cbUppdateringsfrekvens.Items.Add("10");
+            cbUppdateringsfrekvens.Items.Add("30");
+            cbUppdateringsfrekvens.Items.Add("60");
+            cbUppdateringsfrekvens.SelectedIndex = 0;
+
         }
 
         private string getSelectedCat()
@@ -186,6 +196,29 @@ namespace PresentationLayer
                 FyllPodcasts();
                 _ = forDrojning();
 
+            }
+        }
+
+        private void btnTaBortPodd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int valtIndex = dataGridAllaPoddar.CurrentCell.RowIndex;
+                if (valtIndex > -1)
+                {
+                    if (DialogResult.Yes == MessageBox.Show("Vill du ta bort podden ?", "Confirmation",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                    {
+                        string namnTaBort = dataGridAllaPoddar.Rows[valtIndex].Cells[1].Value.ToString();
+                        podKontroller.TaBortPod(namnTaBort);
+                        dataGridAllaPoddar.Rows.RemoveAt(valtIndex);
+                        dataGridAllaPoddar.ClearSelection();
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Kan inte ta bort vald rad, välj raden och försök igen");
             }
         }
     }
