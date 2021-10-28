@@ -31,11 +31,15 @@ namespace BusinessLayer
             }
         }
 
-        public void UppdateraPodcast(string namn)
+        public async void UppdateraPodcast(string namn)
         {
-            HamtaFeed(namn).TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
+            //HamtaFeed(namn).TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
             Pod uppdateradPodcast = HamtaFeed(namn);
             int indexAvPodcast = podcastRepo.hamtaIndexAvNamn(namn);
+
+            uppdateradPodcast.TidForUppdatering = DateTime.Now.AddSeconds(Int32.Parse(HamtaFeed(namn).UppdateringsFrekvens));
+            uppdateradPodcast.AntalAvsnitt = await podcastRepo.HamtaAvsnitt(uppdateradPodcast.AngivetUrl);
+            
             podcastRepo.UppdateraPodd(indexAvPodcast, uppdateradPodcast);
 
         }
