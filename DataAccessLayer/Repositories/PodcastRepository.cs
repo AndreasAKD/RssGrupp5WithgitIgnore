@@ -21,6 +21,7 @@ namespace DataAccessLayer.Repositories
         {
             poddLista = new List<Pod>();
             dataHanterare = new SerializerForXml();
+            poddLista = HamtaAlla();
         }
 
         public void Skapa(Pod entity)
