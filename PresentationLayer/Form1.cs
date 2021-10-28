@@ -33,7 +33,7 @@ namespace PresentationLayer
             hamtaKategorier();
             FyllPodcasts();
 
-            enTimer.Interval = 10000;
+            enTimer.Interval = 100000;
             enTimer.Tick += enTimer_Tick;
 
             enTimer.Start();
@@ -50,7 +50,7 @@ namespace PresentationLayer
         private void enTimer_Tick(object sender, EventArgs e)
         {
             podKontroller.KollaPodcastUppdatering();
-            FyllPodcasts();
+            _ = forDrojning();
         }
 
         private void hamtaKategorier()
@@ -102,7 +102,7 @@ namespace PresentationLayer
                
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 dataGridAllaPoddar.Rows.Clear();
-                //FyllPodcasts();
+                
                 _ = forDrojning();
 
             }
@@ -141,7 +141,7 @@ namespace PresentationLayer
         {
             string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
             string uppdateringsfrekvens = dataGridAllaPoddar.CurrentRow.Cells[3].Value.ToString();
-            txtBoxNamn.Text = feedNamn;
+            //txtBoxNamn.Text = feedNamn;
             
             HamtaAvsnittForValdPod();
 
@@ -183,7 +183,8 @@ namespace PresentationLayer
 
                 DateTime uppdatering = DateTime.Now;
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
-
+                FyllPodcasts();
+                _ = forDrojning();
 
             }
         }

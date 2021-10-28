@@ -262,6 +262,7 @@ namespace PresentationLayer
             this.columnFinnsNyaAvsnitt});
             this.dataGridAllaPoddar.Location = new System.Drawing.Point(137, 52);
             this.dataGridAllaPoddar.Name = "dataGridAllaPoddar";
+            this.dataGridAllaPoddar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
             this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
