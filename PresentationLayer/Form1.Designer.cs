@@ -147,7 +147,7 @@ namespace PresentationLayer
             this.btnUppdateraKategorier.TabIndex = 60;
             this.btnUppdateraKategorier.Text = "Uppdatera";
             this.btnUppdateraKategorier.UseVisualStyleBackColor = true;
-            this.btnUppdateraKategorier.Click += new System.EventHandler(this.btnUppdateraKategorier_Click);
+
             // 
             // btnNyKategori
             // 
@@ -183,7 +183,7 @@ namespace PresentationLayer
             this.btnUppdateraPoddlsita.TabIndex = 56;
             this.btnUppdateraPoddlsita.Text = "Uppdatera";
             this.btnUppdateraPoddlsita.UseVisualStyleBackColor = true;
-            this.btnUppdateraPoddlsita.Click += new System.EventHandler(this.btnUppdateraPoddlsita_Click_1);
+
             // 
             // btnTaBortPodd
             // 
@@ -193,7 +193,7 @@ namespace PresentationLayer
             this.btnTaBortPodd.TabIndex = 55;
             this.btnTaBortPodd.Text = "Ta Bort...";
             this.btnTaBortPodd.UseVisualStyleBackColor = true;
-            this.btnTaBortPodd.Click += new System.EventHandler(this.btnTaBortPodd_Click);
+ 
             // 
             // btnLaggTillPodd
             // 
@@ -203,7 +203,7 @@ namespace PresentationLayer
             this.btnLaggTillPodd.TabIndex = 54;
             this.btnLaggTillPodd.Text = "Lägg till...";
             this.btnLaggTillPodd.UseVisualStyleBackColor = true;
-            this.btnLaggTillPodd.Click += new System.EventHandler(this.btnLaggTillPodd_Click);
+
             // 
             // textBoxKategorier
             // 
@@ -221,7 +221,7 @@ namespace PresentationLayer
             this.listBoxKategorier.Name = "listBoxKategorier";
             this.listBoxKategorier.Size = new System.Drawing.Size(245, 274);
             this.listBoxKategorier.TabIndex = 52;
-            this.listBoxKategorier.SelectedIndexChanged += new System.EventHandler(this.listBoxKategorier_SelectedIndexChanged);
+
             // 
             // lblURL
             // 
@@ -270,7 +270,7 @@ namespace PresentationLayer
             this.dataGridAllaPoddar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
-            this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
+
             // 
             // columnAntalAvsnitt
             // 
@@ -306,7 +306,7 @@ namespace PresentationLayer
             this.listBoxAvsnitt.Name = "listBoxAvsnitt";
             this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 284);
             this.listBoxAvsnitt.TabIndex = 70;
-            this.listBoxAvsnitt.SelectedIndexChanged += new System.EventHandler(this.listBoxAvsnitt_SelectedIndexChanged);
+
             // 
             // Form1
             // 
