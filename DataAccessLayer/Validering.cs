@@ -12,10 +12,12 @@ namespace DataAccessLayer
     public class Validering
     {
         PodcastRepository podcastRepo;
+        KategoriRepository kategoriRepository;
 
         public Validering()
         {
             podcastRepo = new PodcastRepository();
+            kategoriRepository = new KategoriRepository();
         }
 
         public bool ArStrangNullEllerTom (string text)
@@ -67,6 +69,24 @@ namespace DataAccessLayer
                 MessageBox.Show("Det finns redan en podcast med detta namn! Vänligen välj ett unikt namn.");
             }
 
+            return namnFinnsInte;
+        }
+
+        public bool KategoriFinnsRedan(string katNamn)
+        {
+            bool namnFinnsInte = true;
+            var allaKategorier = kategoriRepository.HamtaAlla();
+
+            for (int i = 0; i < allaKategorier.Count; i++)
+            {
+                if (allaKategorier[i].KategoriNamn.Contains(katNamn))
+                    namnFinnsInte = false;
+            }
+
+            if (!namnFinnsInte)
+            {
+                MessageBox.Show("Det finns redan en kategori med detta namn! Vänligen välj ett unikt namn.");
+            }
 
             return namnFinnsInte;
         }
