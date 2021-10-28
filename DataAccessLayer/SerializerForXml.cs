@@ -40,13 +40,13 @@ namespace DataAccessLayer
                     poddLista = (List<Pod>)xmlSerializer.Deserialize(oppnaXml);
                 }
                 return poddLista;
-            }
+        }
             catch (Exception)
             {
                 throw new KanInteSerializeraException();
 
-            }
-        }
+    }
+}
 
         public void KategoriSerializera(List<Kategori> kategoriLista)
         {

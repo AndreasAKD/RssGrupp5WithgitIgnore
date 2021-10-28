@@ -40,6 +40,13 @@ namespace BusinessLayer
 
         }
 
+        public async void UppdateraPodcast(int index, string nyttNamn, string nyttUrl, string nyUpdFrekvens, DateTime nyUppdatering, string nyKategori) {
+           
+            List<Avsnitt> avsnitt = await podcastRepo.HamtaAvsnitt(nyttUrl);
+            Pod nyPodcast = new Pod(nyttNamn, nyttUrl, nyUpdFrekvens, nyUppdatering, nyKategori, avsnitt);
+            podcastRepo.UppdateraPodd(index, nyPodcast);
+        }
+
         public void KollaPodcastUppdatering()
         {
             foreach (Pod podcast in podcastRepo.HamtaAlla())
@@ -61,6 +68,10 @@ namespace BusinessLayer
             return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.Namn, namn, StringComparison.OrdinalIgnoreCase)).First();
         }
 
-
+        public int HamtaIndexMedNamn (string namn)
+        {
+            int index = podcastRepo.hamtaIndexAvNamn(namn);
+            return index;
+        }
     }
 }

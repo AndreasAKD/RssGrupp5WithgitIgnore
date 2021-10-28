@@ -16,7 +16,7 @@ namespace DataAccessLayer
             if(String.IsNullOrEmpty(text))
             {
                 varde = false;
-                MessageBox.Show("Ett textfält är tomt! /n Vänligen fyll i alla fält.");
+                MessageBox.Show("Ett textfält är tomt! Vänligen fyll i alla fält.");
             }
 
             else
