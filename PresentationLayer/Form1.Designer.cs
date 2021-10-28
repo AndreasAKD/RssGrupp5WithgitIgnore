@@ -181,6 +181,7 @@ namespace PresentationLayer
             this.btnUppdateraPoddlsita.TabIndex = 56;
             this.btnUppdateraPoddlsita.Text = "Uppdatera";
             this.btnUppdateraPoddlsita.UseVisualStyleBackColor = true;
+            this.btnUppdateraPoddlsita.Click += new System.EventHandler(this.btnUppdateraPoddlsita_Click_1);
             // 
             // btnTaBortPodd
             // 

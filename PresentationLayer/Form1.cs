@@ -35,8 +35,10 @@ namespace PresentationLayer
 
             enTimer.Interval = 10000;
             enTimer.Tick += enTimer_Tick;
+
             enTimer.Start();
             
+
         }
 
         private void btnNyKategori_Click(object sender, EventArgs e)
@@ -91,9 +93,12 @@ namespace PresentationLayer
 
         private void btnLaggTillPodd_Click(object sender, EventArgs e)
         {
-            if (validering.HarComboboxVarde(cbValdKategori))
-            {
-                
+
+            if (validering.HarComboboxVarde(cbValdKategori) && validering.HarComboboxVarde(cbUppdateringsfrekvens) &&
+              validering.ArStrangNullEllerTom(txtBoxNamn.Text) && validering.ArStrangNullEllerTom(textBoxURL.Text))
+                {
+                dataGridAllaPoddar.Rows.Clear();
+
                
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 dataGridAllaPoddar.Rows.Clear();
@@ -164,6 +169,23 @@ namespace PresentationLayer
             
             textBoxBeskrivning.Text = valdPodNamn.AntalAvsnitt[listBoxAvsnitt.SelectedIndex].AvsnittsBeskrivning;
 
+        }
+
+        private void btnUppdateraPoddlsita_Click_1(object sender, EventArgs e)
+        {
+            if (validering.HarComboboxVarde(cbValdKategori) && validering.HarComboboxVarde(cbUppdateringsfrekvens) &&
+              validering.ArStrangNullEllerTom(txtBoxNamn.Text) && validering.ArStrangNullEllerTom(textBoxURL.Text))
+            {
+                string hamtaRad = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+                Pod valdPodcast = podKontroller.HamtaFeed(hamtaRad);
+                string basNamn = valdPodcast.Namn;
+                int basNamnIndex = podKontroller.HamtaIndexMedNamn(basNamn);
+
+                DateTime uppdatering = DateTime.Now;
+                podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
+
+
+            }
         }
     }
 }
