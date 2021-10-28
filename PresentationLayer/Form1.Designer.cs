@@ -76,7 +76,7 @@ namespace PresentationLayer
             // 
             this.lblBeskrivning.AutoSize = true;
             this.lblBeskrivning.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBeskrivning.Location = new System.Drawing.Point(814, 517);
+            this.lblBeskrivning.Location = new System.Drawing.Point(814, 485);
             this.lblBeskrivning.Name = "lblBeskrivning";
             this.lblBeskrivning.Size = new System.Drawing.Size(88, 18);
             this.lblBeskrivning.TabIndex = 67;
@@ -86,7 +86,7 @@ namespace PresentationLayer
             // 
             this.lblKategorier.AutoSize = true;
             this.lblKategorier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKategorier.Location = new System.Drawing.Point(814, 56);
+            this.lblKategorier.Location = new System.Drawing.Point(814, 20);
             this.lblKategorier.Name = "lblKategorier";
             this.lblKategorier.Size = new System.Drawing.Size(80, 18);
             this.lblKategorier.TabIndex = 66;
@@ -123,9 +123,10 @@ namespace PresentationLayer
             // 
             // textBoxBeskrivning
             // 
-            this.textBoxBeskrivning.Location = new System.Drawing.Point(817, 540);
+            this.textBoxBeskrivning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.textBoxBeskrivning.Location = new System.Drawing.Point(817, 517);
             this.textBoxBeskrivning.Name = "textBoxBeskrivning";
-            this.textBoxBeskrivning.Size = new System.Drawing.Size(276, 237);
+            this.textBoxBeskrivning.Size = new System.Drawing.Size(276, 284);
             this.textBoxBeskrivning.TabIndex = 62;
             this.textBoxBeskrivning.Text = "";
             // 
@@ -146,7 +147,7 @@ namespace PresentationLayer
             this.btnUppdateraKategorier.TabIndex = 60;
             this.btnUppdateraKategorier.Text = "Uppdatera";
             this.btnUppdateraKategorier.UseVisualStyleBackColor = true;
-            this.btnUppdateraKategorier.Click += new System.EventHandler(this.btnUppdateraKategorier_Click);
+
             // 
             // btnNyKategori
             // 
@@ -182,7 +183,7 @@ namespace PresentationLayer
             this.btnUppdateraPoddlsita.TabIndex = 56;
             this.btnUppdateraPoddlsita.Text = "Uppdatera";
             this.btnUppdateraPoddlsita.UseVisualStyleBackColor = true;
-            this.btnUppdateraPoddlsita.Click += new System.EventHandler(this.btnUppdateraPoddlsita_Click_1);
+
             // 
             // btnTaBortPodd
             // 
@@ -192,6 +193,7 @@ namespace PresentationLayer
             this.btnTaBortPodd.TabIndex = 55;
             this.btnTaBortPodd.Text = "Ta Bort...";
             this.btnTaBortPodd.UseVisualStyleBackColor = true;
+ 
             // 
             // btnLaggTillPodd
             // 
@@ -201,7 +203,7 @@ namespace PresentationLayer
             this.btnLaggTillPodd.TabIndex = 54;
             this.btnLaggTillPodd.Text = "Lägg till...";
             this.btnLaggTillPodd.UseVisualStyleBackColor = true;
-            this.btnLaggTillPodd.Click += new System.EventHandler(this.btnLaggTillPodd_Click);
+
             // 
             // textBoxKategorier
             // 
@@ -212,12 +214,14 @@ namespace PresentationLayer
             // 
             // listBoxKategorier
             // 
+            this.listBoxKategorier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxKategorier.FormattingEnabled = true;
-            this.listBoxKategorier.Location = new System.Drawing.Point(817, 86);
+            this.listBoxKategorier.ItemHeight = 18;
+            this.listBoxKategorier.Location = new System.Drawing.Point(817, 52);
             this.listBoxKategorier.Name = "listBoxKategorier";
-            this.listBoxKategorier.Size = new System.Drawing.Size(245, 251);
+            this.listBoxKategorier.Size = new System.Drawing.Size(245, 274);
             this.listBoxKategorier.TabIndex = 52;
-            this.listBoxKategorier.SelectedIndexChanged += new System.EventHandler(this.listBoxKategorier_SelectedIndexChanged);
+
             // 
             // lblURL
             // 
@@ -263,9 +267,10 @@ namespace PresentationLayer
             this.columnFinnsNyaAvsnitt});
             this.dataGridAllaPoddar.Location = new System.Drawing.Point(137, 52);
             this.dataGridAllaPoddar.Name = "dataGridAllaPoddar";
+            this.dataGridAllaPoddar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
-            this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
+
             // 
             // columnAntalAvsnitt
             // 
@@ -294,14 +299,14 @@ namespace PresentationLayer
             // 
             // listBoxAvsnitt
             // 
-            this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.listBoxAvsnitt.FormattingEnabled = true;
-            this.listBoxAvsnitt.ItemHeight = 17;
+            this.listBoxAvsnitt.ItemHeight = 20;
             this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 517);
             this.listBoxAvsnitt.Name = "listBoxAvsnitt";
-            this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 191);
+            this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 284);
             this.listBoxAvsnitt.TabIndex = 70;
-            this.listBoxAvsnitt.SelectedIndexChanged += new System.EventHandler(this.listBoxAvsnitt_SelectedIndexChanged);
+
             // 
             // Form1
             // 

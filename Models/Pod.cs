@@ -27,6 +27,7 @@ namespace Models
             get
             {
                 return TidForUppdatering <= DateTime.Now;
+                
             }
         }
     }
