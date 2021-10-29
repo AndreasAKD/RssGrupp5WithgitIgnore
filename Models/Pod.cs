@@ -20,7 +20,15 @@ namespace Models
             Kategori = kategori;
             AntalAvsnitt = antalAvsnitt;
         }
-        public Pod() {  }
+
+        public Pod()
+        {
+        }
+
+        public override string VirtualReturnTest()
+        {
+            return "Detta är en virtual ovverride av typen Podcast";
+        }
 
         public bool KollaUppdatering
         {
