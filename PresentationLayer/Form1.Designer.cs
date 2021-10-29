@@ -59,6 +59,8 @@ namespace PresentationLayer
             this.columnUppdateringsIntervall = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnFinnsNyaAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllaPoddar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,9 +110,10 @@ namespace PresentationLayer
             this.lblLaggTillPodd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLaggTillPodd.Location = new System.Drawing.Point(137, 339);
             this.lblLaggTillPodd.Name = "lblLaggTillPodd";
-            this.lblLaggTillPodd.Size = new System.Drawing.Size(150, 20);
+            this.lblLaggTillPodd.Size = new System.Drawing.Size(280, 20);
             this.lblLaggTillPodd.TabIndex = 64;
-            this.lblLaggTillPodd.Text = "Lägg till en podcast:";
+            this.lblLaggTillPodd.Text = "Lägg till en ny podcast eller ändra vald:";
+            this.lblLaggTillPodd.Click += new System.EventHandler(this.lblLaggTillPodd_Click);
             // 
             // btnFiltreraKategorier
             // 
@@ -307,11 +310,32 @@ namespace PresentationLayer
             this.listBoxAvsnitt.TabIndex = 70;
             this.listBoxAvsnitt.SelectedIndexChanged += new System.EventHandler(this.listBoxAvsnitt_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(373, 372);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.TabIndex = 71;
+            this.label1.Text = "Uppdateringsintervall";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(528, 373);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Välj kategori:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 828);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAvsnitt);
             this.Controls.Add(this.lblAvsnitt);
             this.Controls.Add(this.lblBeskrivning);
@@ -380,6 +404,8 @@ namespace PresentationLayer
         private System.Windows.Forms.DataGridViewTextBoxColumn columnUppdateringsIntervall;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnFinnsNyaAvsnitt;
         private System.Windows.Forms.ListBox listBoxAvsnitt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
