@@ -52,10 +52,10 @@ namespace PresentationLayer
         }
         private async void enTimer_Tick(object sender, EventArgs e)
         {
-            podKontroller.KollaPodcastUppdatering();
+            await podKontroller.KollaPodcastUppdatering();
             
             
-            //_ = forDrojning();
+
         }
 
         private void hamtaKategorier()
@@ -74,10 +74,7 @@ namespace PresentationLayer
             }
         }
 
-        private void kategoriLista_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBoxKategorier.Text = ("");
-        }
+
 
         private void fyllCbUppdatering()
         {
@@ -88,22 +85,9 @@ namespace PresentationLayer
 
         }
 
-        private string getSelectedCat()
-        {
-            string selectedCat = "";
+        
 
-            if (listBoxKategorier.SelectedIndex != -1)
-            {
-                selectedCat = listBoxKategorier.SelectedItem.ToString();
-            }
 
-            return selectedCat;
-        }
-
-        private void listBoxKategorier_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async void btnLaggTillPodd_Click(object sender, EventArgs e)
         {
@@ -148,6 +132,13 @@ namespace PresentationLayer
                     dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens);
                 }
             }
+
+        }
+
+        private void SkrivUtSparade(string kat)
+        {
+            foreach (Pod podd in podKontroller.HamtaAllaPodKategori(kat))
+                hamtaPodcastsKategori(podd.Namn);
 
         }
 
@@ -231,6 +222,8 @@ namespace PresentationLayer
                         podKontroller.TaBortPod(namnTaBort);
                         dataGridAllaPoddar.Rows.RemoveAt(valtIndex);
                         dataGridAllaPoddar.ClearSelection();
+                       
+                        
                     }
                 }
             }
@@ -325,6 +318,31 @@ namespace PresentationLayer
         private void button1_Click(object sender, EventArgs e)
         {
             FyllPodcasts();
+        }
+
+        private void btnFiltreraKategorier_Click(object sender, EventArgs e)
+        {
+            if (listBoxKategorier.SelectedItem != null)
+            {
+                textBoxKategorier.Text = listBoxKategorier.SelectedItem.ToString();
+                string namnKatValt = listBoxKategorier.SelectedItem.ToString();
+                dataGridAllaPoddar.Rows.Clear();
+                SkrivUtSparade(namnKatValt);
+                listBoxKategorier.ClearSelected();
+            }
+        }
+
+        private void hamtaPodcastsKategori(string namn)
+        {
+            
+            Pod podd = podKontroller.HamtaFeed(namn);
+            var antalAvsnitt = podd.AntalAvsnitt.Count().ToString();
+            dataGridAllaPoddar.Rows.Add(antalAvsnitt, podd.Namn, podd.Kategori, podd.UppdateringsFrekvens);
+        }
+
+        private void listBoxKategorier_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 
