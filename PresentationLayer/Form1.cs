@@ -74,10 +74,7 @@ namespace PresentationLayer
             }
         }
 
-        private void kategoriLista_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBoxKategorier.Text = ("");
-        }
+
 
         private void fyllCbUppdatering()
         {
@@ -225,6 +222,8 @@ namespace PresentationLayer
                         podKontroller.TaBortPod(namnTaBort);
                         dataGridAllaPoddar.Rows.RemoveAt(valtIndex);
                         dataGridAllaPoddar.ClearSelection();
+                       
+                        
                     }
                 }
             }
