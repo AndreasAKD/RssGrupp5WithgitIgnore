@@ -53,10 +53,31 @@ namespace BusinessLayer
             podcastRepo.UppdateraPodd(index, nyPodcast);
         }
 
+
+        public void TaBortPodavKategori(string katNamn)
+        {
+            List<Pod> poddarAvKategori = new List<Pod>();
+            int langd = podcastRepo.HamtaAlla().Count;
+            for (int i = 0; i < langd; i++)
+            {
+                if (string.Equals(podcastRepo.HamtaAlla()[i].Kategori, katNamn, StringComparison.OrdinalIgnoreCase))
+                {
+                    poddarAvKategori.Add(podcastRepo.HamtaAlla()[i]); 
+                }
+            
+            }
+            foreach (Pod podd in poddarAvKategori)
+            {
+                TaBortPod(podd.Namn);
+
+            }
+        }
+
         public void TaBortPod(string namn)
         {
             int taBortIndex = -1;
-            for (int i = 0; i < podcastRepo.HamtaAlla().Count; i++)
+            int langd = podcastRepo.HamtaAlla().Count;
+            for (int i = 0; i < langd; i++)
             {
                 if (string.Equals(podcastRepo.HamtaAlla()[i].Namn, namn, StringComparison.OrdinalIgnoreCase))
                     taBortIndex = i;
@@ -87,6 +108,8 @@ namespace BusinessLayer
         {
             return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.Namn, namn, StringComparison.OrdinalIgnoreCase)).First();
         }
+
+     
 
         public int HamtaIndexMedNamn(string namn)
         {

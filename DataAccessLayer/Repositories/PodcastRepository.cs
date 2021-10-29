@@ -33,6 +33,8 @@ namespace DataAccessLayer.Repositories
         public void TaBort(int index)
         {
             poddLista.RemoveAt(index);
+
+            
             SparaAndringar();
         }
 

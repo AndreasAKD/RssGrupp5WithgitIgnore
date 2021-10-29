@@ -53,14 +53,13 @@ namespace PresentationLayer
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.txtBoxNamn = new System.Windows.Forms.TextBox();
             this.dataGridAllaPoddar = new System.Windows.Forms.DataGridView();
+            this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.columnAntalAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPodNamn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnUppdateringsIntervall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnFinnsNyaAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllaPoddar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +112,7 @@ namespace PresentationLayer
             this.lblLaggTillPodd.Size = new System.Drawing.Size(280, 20);
             this.lblLaggTillPodd.TabIndex = 64;
             this.lblLaggTillPodd.Text = "Lägg till en ny podcast eller ändra vald:";
-            this.lblLaggTillPodd.Click += new System.EventHandler(this.lblLaggTillPodd_Click);
+
             // 
             // btnFiltreraKategorier
             // 
@@ -123,6 +122,7 @@ namespace PresentationLayer
             this.btnFiltreraKategorier.TabIndex = 63;
             this.btnFiltreraKategorier.Text = "Filtrera";
             this.btnFiltreraKategorier.UseVisualStyleBackColor = true;
+
             // 
             // textBoxBeskrivning
             // 
@@ -141,6 +141,7 @@ namespace PresentationLayer
             this.btnTaBortKategori.TabIndex = 61;
             this.btnTaBortKategori.Text = "Ta Bort...";
             this.btnTaBortKategori.UseVisualStyleBackColor = true;
+            this.btnTaBortKategori.Click += new System.EventHandler(this.btnTaBortKategori_Click);
             // 
             // btnUppdateraKategorier
             // 
@@ -265,39 +266,14 @@ namespace PresentationLayer
             this.columnAntalAvsnitt,
             this.columnPodNamn,
             this.columnKategori,
-            this.columnUppdateringsIntervall,
-            this.columnFinnsNyaAvsnitt});
-            this.dataGridAllaPoddar.Location = new System.Drawing.Point(137, 52);
+            this.columnUppdateringsIntervall});
+            this.dataGridAllaPoddar.Location = new System.Drawing.Point(141, 52);
             this.dataGridAllaPoddar.Name = "dataGridAllaPoddar";
             this.dataGridAllaPoddar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridAllaPoddar.Size = new System.Drawing.Size(545, 271);
+            this.dataGridAllaPoddar.Size = new System.Drawing.Size(443, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
+
             this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
-            // 
-            // columnAntalAvsnitt
-            // 
-            this.columnAntalAvsnitt.HeaderText = "Antal avsnitt";
-            this.columnAntalAvsnitt.Name = "columnAntalAvsnitt";
-            // 
-            // columnPodNamn
-            // 
-            this.columnPodNamn.HeaderText = "Namn";
-            this.columnPodNamn.Name = "columnPodNamn";
-            // 
-            // columnKategori
-            // 
-            this.columnKategori.HeaderText = "Kategori";
-            this.columnKategori.Name = "columnKategori";
-            // 
-            // columnUppdateringsIntervall
-            // 
-            this.columnUppdateringsIntervall.HeaderText = "Upd.Intervall";
-            this.columnUppdateringsIntervall.Name = "columnUppdateringsIntervall";
-            // 
-            // columnFinnsNyaAvsnitt
-            // 
-            this.columnFinnsNyaAvsnitt.HeaderText = "Nya avsnitt";
-            this.columnFinnsNyaAvsnitt.Name = "columnFinnsNyaAvsnitt";
             // 
             // listBoxAvsnitt
             // 
@@ -318,7 +294,7 @@ namespace PresentationLayer
             this.label1.Size = new System.Drawing.Size(106, 13);
             this.label1.TabIndex = 71;
             this.label1.Text = "Uppdateringsintervall";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // label2
             // 
@@ -328,6 +304,26 @@ namespace PresentationLayer
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 72;
             this.label2.Text = "Välj kategori:";
+            // 
+            // columnAntalAvsnitt
+            // 
+            this.columnAntalAvsnitt.HeaderText = "Antal avsnitt";
+            this.columnAntalAvsnitt.Name = "columnAntalAvsnitt";
+            // 
+            // columnPodNamn
+            // 
+            this.columnPodNamn.HeaderText = "Namn";
+            this.columnPodNamn.Name = "columnPodNamn";
+            // 
+            // columnKategori
+            // 
+            this.columnKategori.HeaderText = "Kategori";
+            this.columnKategori.Name = "columnKategori";
+            // 
+            // columnUppdateringsIntervall
+            // 
+            this.columnUppdateringsIntervall.HeaderText = "Upd.Intervall";
+            this.columnUppdateringsIntervall.Name = "columnUppdateringsIntervall";
             // 
             // Form1
             // 
@@ -398,14 +394,13 @@ namespace PresentationLayer
         private System.Windows.Forms.TextBox textBoxURL;
         private System.Windows.Forms.TextBox txtBoxNamn;
         private System.Windows.Forms.DataGridView dataGridAllaPoddar;
+        private System.Windows.Forms.ListBox listBoxAvsnitt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnAntalAvsnitt;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPodNamn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnKategori;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnUppdateringsIntervall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnFinnsNyaAvsnitt;
-        private System.Windows.Forms.ListBox listBoxAvsnitt;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }
 
