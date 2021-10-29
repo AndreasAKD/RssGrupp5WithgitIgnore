@@ -36,7 +36,7 @@ namespace PresentationLayer
             enTimer.Interval = 15000;
             enTimer.Tick += enTimer_Tick;
 
-            //enTimer.Start();
+            enTimer.Start();
 
 
         }
@@ -88,22 +88,9 @@ namespace PresentationLayer
 
         }
 
-        private string getSelectedCat()
-        {
-            string selectedCat = "";
+        
 
-            if (listBoxKategorier.SelectedIndex != -1)
-            {
-                selectedCat = listBoxKategorier.SelectedItem.ToString();
-            }
 
-            return selectedCat;
-        }
-
-        private void listBoxKategorier_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async void btnLaggTillPodd_Click(object sender, EventArgs e)
         {
