@@ -33,10 +33,10 @@ namespace PresentationLayer
             hamtaKategorier();
             FyllPodcasts();
 
-            enTimer.Interval = 30000;
+            enTimer.Interval = 300000;
             enTimer.Tick += enTimer_Tick;
 
-            //enTimer.Start();
+            enTimer.Start();
 
 
         }
@@ -122,7 +122,7 @@ namespace PresentationLayer
 
             }
 
-            
+
         }
 
         async Task forDrojning()
@@ -151,17 +151,18 @@ namespace PresentationLayer
 
         private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridAllaPoddar.Rows.Count > 0) { 
-            string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
-            
-            //Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
-            //string URLet = valdPodNamn.AngivetUrl;
-            ////string namnPod = valdPodNamn.Namn;
-            
-            
-           
+            if (dataGridAllaPoddar.Rows.Count > 0)
+            {
+                string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
 
-            HamtaAvsnittForValdPod();
+                //Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
+                //string URLet = valdPodNamn.AngivetUrl;
+                ////string namnPod = valdPodNamn.Namn;
+
+
+
+
+                HamtaAvsnittForValdPod();
                 //textBoxURL.Text = (URLet);
                 //txtBoxNamn.Text = (namnPod);
 
@@ -206,7 +207,7 @@ namespace PresentationLayer
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
                 FyllPodcasts();
-               
+
                 _ = forDrojning();
 
             }
@@ -263,9 +264,9 @@ namespace PresentationLayer
 
         private void btnTaBortKategori_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-                if (listBoxKategorier.SelectedItem != null) 
+            try
+            {
+                if (listBoxKategorier.SelectedItem != null)
                 {
                     string kategoriNamn = listBoxKategorier.SelectedItem.ToString();
 
@@ -275,7 +276,7 @@ namespace PresentationLayer
                     {
                         listBoxKategorier.Items.Remove(listBoxKategorier.SelectedItem);
                         cbValdKategori.Items.Remove(kategoriNamn);
-                     
+
                         podKontroller.TaBortPodavKategori(kategoriNamn);
                         kategoriController.TaBortKategori(kategoriNamn);
                         dataGridAllaPoddar.Rows.Clear();
@@ -287,26 +288,12 @@ namespace PresentationLayer
                     MessageBox.Show("Du måste välja en kategori");
                 }
             }
-            //catch (InvalidOperationException)
-            //{
-            //    MessageBox.Show("Försök igen");
-            //}
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Försök igen");
+            }
         }
 
-        //private void FyllPodcastKategori()
-        //{
-        //    foreach (Pod podd in podKontroller.HamtaAllaPodcasts())
-        //        SkrivFeed(podd.Namn);
-                 
-        //}
-
-        //private void SkrivFeed(string namn)
-        //{
-        //    string avsnitt = "";
-        //    Models.Pod ny = podKontroller.HamtaFeed(namn);
-        //    avsnitt = $"{ny.AntalAvsnitt.Count}";
-        //    dataGridAllaPoddar.Rows.Add(new string[] { avsnitt, ny.Namn, ny.Url, ny.UppdateringsFrekvens, ny.Kategori });
-        //}
-
+    }
 
     }
