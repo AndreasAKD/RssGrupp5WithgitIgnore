@@ -104,7 +104,7 @@ namespace PresentationLayer
 
         }
 
-        private void btnLaggTillPodd_Click(object sender, EventArgs e)
+        private async void btnLaggTillPodd_Click(object sender, EventArgs e)
         {
 
             if (validering.HarComboboxVarde(cbValdKategori) && validering.HarComboboxVarde(cbUppdateringsfrekvens) &&
@@ -113,10 +113,10 @@ namespace PresentationLayer
                 dataGridAllaPoddar.Rows.Clear();
 
 
-                podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
+                await podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 dataGridAllaPoddar.Rows.Clear();
-                
-                _ = forDrojning();
+                FyllPodcasts();
+                //_ = forDrojning();
 
             }
 
@@ -125,7 +125,7 @@ namespace PresentationLayer
 
         async Task forDrojning()
         {
-            await Task.Delay(4000);
+            await Task.Delay(2000);
             FyllPodcasts();
         }
 
@@ -186,19 +186,18 @@ namespace PresentationLayer
             if (validering.HarComboboxVarde(cbValdKategori) && validering.HarComboboxVarde(cbUppdateringsfrekvens) &&
               validering.ArStrangNullEllerTom(txtBoxNamn.Text) && validering.ArStrangNullEllerTom(textBoxURL.Text))
             {
-                string hamtaRadNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
-                Pod valdPodcast = podKontroller.HamtaFeed(hamtaRadNamn);
+                string hamtaRad = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+                Pod valdPodcast = podKontroller.HamtaFeed(hamtaRad);
                 string basNamn = valdPodcast.Namn;
                 int basNamnIndex = podKontroller.HamtaIndexMedNamn(basNamn);
 
                 DateTime uppdatering = DateTime.Now;
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
-                
-                
+                FyllPodcasts();
+               
                 _ = forDrojning();
 
             }
-           
         }
 
         private void btnTaBortPodd_Click(object sender, EventArgs e)

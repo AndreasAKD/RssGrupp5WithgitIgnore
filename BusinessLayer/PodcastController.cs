@@ -20,7 +20,9 @@ namespace BusinessLayer
             podcastRepo = new PodcastRepository();
         }
 
-        public async void SkapaPodcast(string url, string namn, string kategori, string updIntervall)
+        public async 
+        Task
+        SkapaPodcast(string url, string namn, string kategori, string updIntervall)
         {
             if (validering.ArStrangNullEllerTom(namn) && validering.ArStrangNullEllerTom(url))
             {
