@@ -104,6 +104,11 @@ namespace BusinessLayer
             return podcastRepo.HamtaAlla();
         }
 
+        public List<Pod> HamtaAllaPodKategori(string kategori)
+        {
+            return (podcastRepo.HamtaAlla().Where(podd => string.Equals(podd.Kategori, kategori, StringComparison.OrdinalIgnoreCase))).ToList();
+        }
+
         public Pod HamtaFeed(string namn)
         {
             return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.Namn, namn, StringComparison.OrdinalIgnoreCase)).First();
