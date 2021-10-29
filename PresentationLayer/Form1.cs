@@ -33,10 +33,10 @@ namespace PresentationLayer
             hamtaKategorier();
             FyllPodcasts();
 
-            enTimer.Interval = 60000;
+            enTimer.Interval = 30000;
             enTimer.Tick += enTimer_Tick;
 
-            enTimer.Start();
+            //enTimer.Start();
 
 
         }
@@ -115,6 +115,8 @@ namespace PresentationLayer
 
                 await podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 dataGridAllaPoddar.Rows.Clear();
+                txtBoxNamn.Clear();
+                textBoxURL.Clear();
                 FyllPodcasts();
                 //_ = forDrojning();
 
@@ -140,7 +142,7 @@ namespace PresentationLayer
                 if (pod != null)
                 {
                     var antalAvsnitt = pod.AntalAvsnitt.Count().ToString();
-                    dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens, "0");
+                    dataGridAllaPoddar.Rows.Add(antalAvsnitt, pod.Namn, pod.Kategori, pod.UppdateringsFrekvens);
                 }
             }
 
@@ -149,12 +151,21 @@ namespace PresentationLayer
 
         private void dataGridAllaPoddar_SelectionChanged(object sender, EventArgs e)
         {
+            if (dataGridAllaPoddar.Rows.Count > 0) { 
             string feedNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
-            string uppdateringsfrekvens = dataGridAllaPoddar.CurrentRow.Cells[3].Value.ToString();
-            //txtBoxNamn.Text = feedNamn;
+            
+            //Pod valdPodNamn = podKontroller.HamtaFeed(feedNamn);
+            //string URLet = valdPodNamn.AngivetUrl;
+            ////string namnPod = valdPodNamn.Namn;
+            
+            
+           
 
             HamtaAvsnittForValdPod();
+                //textBoxURL.Text = (URLet);
+                //txtBoxNamn.Text = (namnPod);
 
+            }
         }
 
 
@@ -192,6 +203,7 @@ namespace PresentationLayer
                 int basNamnIndex = podKontroller.HamtaIndexMedNamn(basNamn);
 
                 DateTime uppdatering = DateTime.Now;
+                podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
                 FyllPodcasts();
                
@@ -241,7 +253,7 @@ namespace PresentationLayer
                     int index = podKontroller.HamtaIndexMedNamn(pod.Namn);
                     podKontroller.UppdateraPodcast(index, pod.Namn, pod.AngivetUrl, pod.UppdateringsFrekvens, pod.TidForUppdatering, nyttKatNamn);
                 }
-
+                txtBoxNamn.Clear();
                 hamtaKategorier();
                 FyllPodcasts();
                 _ = forDrojning();
@@ -249,14 +261,52 @@ namespace PresentationLayer
             }
         }
 
-        private void lblLaggTillPodd_Click(object sender, EventArgs e)
+        private void btnTaBortKategori_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+                if (listBoxKategorier.SelectedItem != null) 
+                {
+                    string kategoriNamn = listBoxKategorier.SelectedItem.ToString();
 
+                    if (DialogResult.Yes == MessageBox.Show
+                   (kategoriNamn, "Confirmation",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                    {
+                        listBoxKategorier.Items.Remove(listBoxKategorier.SelectedItem);
+                        cbValdKategori.Items.Remove(kategoriNamn);
+                     
+                        podKontroller.TaBortPodavKategori(kategoriNamn);
+                        kategoriController.TaBortKategori(kategoriNamn);
+                        dataGridAllaPoddar.Rows.Clear();
+                        FyllPodcasts();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Du måste välja en kategori");
+                }
+            }
+            //catch (InvalidOperationException)
+            //{
+            //    MessageBox.Show("Försök igen");
+            //}
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        //private void FyllPodcastKategori()
+        //{
+        //    foreach (Pod podd in podKontroller.HamtaAllaPodcasts())
+        //        SkrivFeed(podd.Namn);
+                 
+        //}
 
-        }
+        //private void SkrivFeed(string namn)
+        //{
+        //    string avsnitt = "";
+        //    Models.Pod ny = podKontroller.HamtaFeed(namn);
+        //    avsnitt = $"{ny.AntalAvsnitt.Count}";
+        //    dataGridAllaPoddar.Rows.Add(new string[] { avsnitt, ny.Namn, ny.Url, ny.UppdateringsFrekvens, ny.Kategori });
+        //}
+
+
     }
-}

@@ -20,6 +20,7 @@ namespace BusinessLayer
         {
             kategoriRepository = new KategoriRepository();
             validering = new Validering();
+
         }
 
         public List<Kategori> hamtaAllaKategorier()
@@ -49,6 +50,16 @@ namespace BusinessLayer
         public void UppdateraKategori (int index, Kategori kategori)
         {
             kategoriRepository.UppdateraPodd(index, kategori);
+        }
+
+        public void TaBortKategori(string valdKat)
+        {
+            int index = hamtaKategoriIndex(valdKat);
+           
+ 
+                    if (index > -1)
+                        kategoriRepository.TaBort(index);
+   
         }
 
     }
