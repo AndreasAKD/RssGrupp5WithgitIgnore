@@ -18,7 +18,15 @@ namespace Models
             Namn = namn;
         }
 
-        public Feed() { }
+        public Feed()
+        {
+
+        }
+
+        public virtual string VirtualReturnTest()
+        {
+            return "Detta är virtualtest från den abstrakta klassen";
+        }
     }
 
 }

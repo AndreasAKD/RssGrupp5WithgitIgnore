@@ -50,9 +50,9 @@ namespace DataAccessLayer.Repositories
                 
         }
 
-            catch (Exception)
-            {
-                throw new KanInteSerializeraException();
+           catch (Exception)
+           {
+               throw new KanInteSerializeraException();
             }
             return podcastLista;
         }
@@ -91,6 +91,20 @@ namespace DataAccessLayer.Repositories
         {
             int hamtatIndex = HamtaAlla().FindIndex(p => p.Namn.Equals(namn));
             return hamtatIndex;
+        }
+
+        public string hamtaVirtualTest()
+        {
+            Pod podden = new Pod();
+            string hamtadPod = podden.VirtualReturnTest();
+            return hamtadPod;
+        }
+
+        public string hamtaVirtualTestAvsnitt()
+        {
+            Avsnitt avsnittet = new Avsnitt();
+            string hamtadAvsnitt = avsnittet.VirtualReturnTest();
+            return hamtadAvsnitt;
         }
     }
 }

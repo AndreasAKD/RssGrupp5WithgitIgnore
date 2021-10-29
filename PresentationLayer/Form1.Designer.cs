@@ -60,6 +60,9 @@ namespace PresentationLayer
             this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnVirtualPodcast = new System.Windows.Forms.Button();
+            this.btnVirtualAvsnitt = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllaPoddar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -321,11 +324,47 @@ namespace PresentationLayer
             this.label2.TabIndex = 72;
             this.label2.Text = "Välj kategori:";
             // 
+            // btnVirtualPodcast
+            // 
+            this.btnVirtualPodcast.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnVirtualPodcast.Location = new System.Drawing.Point(141, 832);
+            this.btnVirtualPodcast.Name = "btnVirtualPodcast";
+            this.btnVirtualPodcast.Size = new System.Drawing.Size(175, 36);
+            this.btnVirtualPodcast.TabIndex = 74;
+            this.btnVirtualPodcast.Text = "Virtual override Podcast";
+            this.btnVirtualPodcast.UseVisualStyleBackColor = true;
+            this.btnVirtualPodcast.Click += new System.EventHandler(this.btnVirtualPodcast_Click);
+            // 
+            // btnVirtualAvsnitt
+            // 
+            this.btnVirtualAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnVirtualAvsnitt.Location = new System.Drawing.Point(352, 832);
+            this.btnVirtualAvsnitt.Name = "btnVirtualAvsnitt";
+            this.btnVirtualAvsnitt.Size = new System.Drawing.Size(160, 36);
+            this.btnVirtualAvsnitt.TabIndex = 75;
+            this.btnVirtualAvsnitt.Text = "Virtual override Avsnitt";
+            this.btnVirtualAvsnitt.UseVisualStyleBackColor = true;
+            this.btnVirtualAvsnitt.Click += new System.EventHandler(this.btnVirtualAvsnitt_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button1.Location = new System.Drawing.Point(480, 324);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 35);
+            this.button1.TabIndex = 76;
+            this.button1.Text = "Uppdatera poddlistan";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 898);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnVirtualAvsnitt);
+            this.Controls.Add(this.btnVirtualPodcast);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAvsnitt);
@@ -397,6 +436,9 @@ namespace PresentationLayer
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPodNamn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnKategori;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnUppdateringsIntervall;
+        private System.Windows.Forms.Button btnVirtualPodcast;
+        private System.Windows.Forms.Button btnVirtualAvsnitt;
+        private System.Windows.Forms.Button button1;
     }
 }
 

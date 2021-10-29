@@ -16,7 +16,15 @@ namespace Models
             AvsnittsBeskrivning = beskrivning;
         }
 
-        public Avsnitt() { }
+        public Avsnitt()
+        {
+
+        }
+
+        public override string VirtualReturnTest()
+        {
+            return "Detta är en virtual ovverride av typen Avsnitt!";
+        }
 
     }
 
