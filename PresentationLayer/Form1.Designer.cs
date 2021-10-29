@@ -53,13 +53,13 @@ namespace PresentationLayer
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.txtBoxNamn = new System.Windows.Forms.TextBox();
             this.dataGridAllaPoddar = new System.Windows.Forms.DataGridView();
-            this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.columnAntalAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPodNamn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnUppdateringsIntervall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBoxAvsnitt = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllaPoddar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +112,6 @@ namespace PresentationLayer
             this.lblLaggTillPodd.Size = new System.Drawing.Size(280, 20);
             this.lblLaggTillPodd.TabIndex = 64;
             this.lblLaggTillPodd.Text = "Lägg till en ny podcast eller ändra vald:";
-
             // 
             // btnFiltreraKategorier
             // 
@@ -122,7 +121,6 @@ namespace PresentationLayer
             this.btnFiltreraKategorier.TabIndex = 63;
             this.btnFiltreraKategorier.Text = "Filtrera";
             this.btnFiltreraKategorier.UseVisualStyleBackColor = true;
-
             // 
             // textBoxBeskrivning
             // 
@@ -272,38 +270,7 @@ namespace PresentationLayer
             this.dataGridAllaPoddar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridAllaPoddar.Size = new System.Drawing.Size(443, 271);
             this.dataGridAllaPoddar.TabIndex = 46;
-
             this.dataGridAllaPoddar.SelectionChanged += new System.EventHandler(this.dataGridAllaPoddar_SelectionChanged);
-            // 
-            // listBoxAvsnitt
-            // 
-            this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.listBoxAvsnitt.FormattingEnabled = true;
-            this.listBoxAvsnitt.ItemHeight = 20;
-            this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 517);
-            this.listBoxAvsnitt.Name = "listBoxAvsnitt";
-            this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 284);
-            this.listBoxAvsnitt.TabIndex = 70;
-            this.listBoxAvsnitt.SelectedIndexChanged += new System.EventHandler(this.listBoxAvsnitt_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(373, 372);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 71;
-            this.label1.Text = "Uppdateringsintervall";
-
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(528, 373);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 72;
-            this.label2.Text = "Välj kategori:";
             // 
             // columnAntalAvsnitt
             // 
@@ -325,11 +292,40 @@ namespace PresentationLayer
             this.columnUppdateringsIntervall.HeaderText = "Upd.Intervall";
             this.columnUppdateringsIntervall.Name = "columnUppdateringsIntervall";
             // 
+            // listBoxAvsnitt
+            // 
+            this.listBoxAvsnitt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.listBoxAvsnitt.FormattingEnabled = true;
+            this.listBoxAvsnitt.ItemHeight = 20;
+            this.listBoxAvsnitt.Location = new System.Drawing.Point(141, 517);
+            this.listBoxAvsnitt.Name = "listBoxAvsnitt";
+            this.listBoxAvsnitt.Size = new System.Drawing.Size(602, 284);
+            this.listBoxAvsnitt.TabIndex = 70;
+            this.listBoxAvsnitt.SelectedIndexChanged += new System.EventHandler(this.listBoxAvsnitt_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(373, 372);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.TabIndex = 71;
+            this.label1.Text = "Uppdateringsintervall";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(528, 373);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Välj kategori:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 828);
+            this.ClientSize = new System.Drawing.Size(1218, 898);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAvsnitt);
