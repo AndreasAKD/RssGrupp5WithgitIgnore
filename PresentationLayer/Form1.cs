@@ -43,9 +43,12 @@ namespace PresentationLayer
 
         private void btnNyKategori_Click(object sender, EventArgs e)
         {
-            kategoriController.skapaKategori(textBoxKategorier.Text);
-            hamtaKategorier();
-            textBoxKategorier.Clear();
+            if (validering.KategoriFinnsRedan(textBoxKategorier.Text))
+            {
+                kategoriController.skapaKategori(textBoxKategorier.Text);
+                hamtaKategorier();
+                textBoxKategorier.Clear();
+            }
         }
         private void enTimer_Tick(object sender, EventArgs e)
         {
@@ -105,7 +108,7 @@ namespace PresentationLayer
         {
 
             if (validering.HarComboboxVarde(cbValdKategori) && validering.HarComboboxVarde(cbUppdateringsfrekvens) &&
-              validering.ArStrangNullEllerTom(txtBoxNamn.Text) && validering.ArStrangNullEllerTom(textBoxURL.Text))
+              validering.ArStrangNullEllerTom(txtBoxNamn.Text) && validering.ArStrangNullEllerTom(textBoxURL.Text) && validering.PoddnamnFinnsRedan(txtBoxNamn.Text))
             {
                 dataGridAllaPoddar.Rows.Clear();
 
@@ -117,10 +120,7 @@ namespace PresentationLayer
 
             }
 
-            else
-            {
-                MessageBox.Show("Ingen kategori är vald. Vänligen välj en kategori. /n Om ingen kategori finns så måste du skapa en först.");
-            }
+            
         }
 
         async Task forDrojning()

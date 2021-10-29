@@ -4,18 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccessLayer.Repositories;
+using Models;
 
 namespace DataAccessLayer
 {
     public class Validering
     {
+        PodcastRepository podcastRepo;
+        KategoriRepository kategoriRepository;
+
+        public Validering()
+        {
+            podcastRepo = new PodcastRepository();
+            kategoriRepository = new KategoriRepository();
+        }
 
         public bool ArStrangNullEllerTom (string text)
         {
             bool varde = false;
             if(String.IsNullOrEmpty(text))
             {
-                varde = false;
+                
                 MessageBox.Show("Ett textfält är tomt! Vänligen fyll i alla fält.");
             }
 
@@ -32,7 +42,7 @@ namespace DataAccessLayer
             bool cbVarde = false;
             if (cb.SelectedIndex == -1)
             {
-                cbVarde = false;
+                
                 MessageBox.Show("Se till att välja både en kategori och uppdateringsfrekvens!");
             }
 
@@ -45,10 +55,40 @@ namespace DataAccessLayer
 
         public bool PoddnamnFinnsRedan(string namn)
         {
-            bool namnFinns = false;
+            bool namnFinnsInte = true;
+            var allaPoddar = podcastRepo.HamtaAlla();
 
+            for (int i = 0; i < allaPoddar.Count; i++)
+            {
+                if (allaPoddar[i].Namn.Contains(namn))
+                    namnFinnsInte = false;
+            }
+            
+            if (!namnFinnsInte)
+            {
+                MessageBox.Show("Det finns redan en podcast med detta namn! Vänligen välj ett unikt namn.");
+            }
 
-            return namnFinns;
+            return namnFinnsInte;
+        }
+
+        public bool KategoriFinnsRedan(string katNamn)
+        {
+            bool namnFinnsInte = true;
+            var allaKategorier = kategoriRepository.HamtaAlla();
+
+            for (int i = 0; i < allaKategorier.Count; i++)
+            {
+                if (allaKategorier[i].KategoriNamn.Contains(katNamn))
+                    namnFinnsInte = false;
+            }
+
+            if (!namnFinnsInte)
+            {
+                MessageBox.Show("Det finns redan en kategori med detta namn! Vänligen välj ett unikt namn.");
+            }
+
+            return namnFinnsInte;
         }
 
 
