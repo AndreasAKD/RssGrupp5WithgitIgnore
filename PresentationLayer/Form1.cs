@@ -33,7 +33,7 @@ namespace PresentationLayer
             hamtaKategorier();
             FyllPodcasts();
 
-            enTimer.Interval = 100000;
+            enTimer.Interval = 60000;
             enTimer.Tick += enTimer_Tick;
 
             enTimer.Start();
@@ -54,7 +54,7 @@ namespace PresentationLayer
         {
             podKontroller.KollaPodcastUppdatering();
             FyllPodcasts();
-            _ = forDrojning();
+            //_ = forDrojning();
         }
 
         private void hamtaKategorier()
@@ -115,7 +115,7 @@ namespace PresentationLayer
 
                 podKontroller.SkapaPodcast(textBoxURL.Text, txtBoxNamn.Text, cbValdKategori.SelectedItem.ToString(), cbUppdateringsfrekvens.SelectedItem.ToString());
                 dataGridAllaPoddar.Rows.Clear();
-
+                
                 _ = forDrojning();
 
             }
@@ -125,7 +125,7 @@ namespace PresentationLayer
 
         async Task forDrojning()
         {
-            await Task.Delay(200);
+            await Task.Delay(4000);
             FyllPodcasts();
         }
 
@@ -186,17 +186,19 @@ namespace PresentationLayer
             if (validering.HarComboboxVarde(cbValdKategori) && validering.HarComboboxVarde(cbUppdateringsfrekvens) &&
               validering.ArStrangNullEllerTom(txtBoxNamn.Text) && validering.ArStrangNullEllerTom(textBoxURL.Text))
             {
-                string hamtaRad = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
-                Pod valdPodcast = podKontroller.HamtaFeed(hamtaRad);
+                string hamtaRadNamn = dataGridAllaPoddar.CurrentRow.Cells[1].Value.ToString();
+                Pod valdPodcast = podKontroller.HamtaFeed(hamtaRadNamn);
                 string basNamn = valdPodcast.Namn;
                 int basNamnIndex = podKontroller.HamtaIndexMedNamn(basNamn);
 
                 DateTime uppdatering = DateTime.Now;
                 podKontroller.UppdateraPodcast(basNamnIndex, txtBoxNamn.Text, textBoxURL.Text, cbUppdateringsfrekvens.SelectedItem.ToString(), uppdatering, cbValdKategori.SelectedItem.ToString());
-                FyllPodcasts();
+                
+                
                 _ = forDrojning();
 
             }
+           
         }
 
         private void btnTaBortPodd_Click(object sender, EventArgs e)
