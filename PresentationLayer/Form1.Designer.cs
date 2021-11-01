@@ -227,7 +227,6 @@ namespace PresentationLayer
             this.listBoxKategorier.Name = "listBoxKategorier";
             this.listBoxKategorier.Size = new System.Drawing.Size(245, 274);
             this.listBoxKategorier.TabIndex = 52;
-            this.listBoxKategorier.SelectedIndexChanged += new System.EventHandler(this.listBoxKategorier_SelectedIndexChanged_1);
             // 
             // lblURL
             // 
