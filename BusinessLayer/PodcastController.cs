@@ -90,6 +90,7 @@ namespace BusinessLayer
 
         public async Task KollaPodcastUppdatering()
         {
+
             foreach (Pod podcast in podcastRepo.HamtaAlla())
             {
                 if (podcast.KollaUppdatering)
@@ -114,6 +115,11 @@ namespace BusinessLayer
             return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.Namn, namn, StringComparison.OrdinalIgnoreCase)).First();
         }
 
+        public Pod HamtaFeedUrl(string url)
+        {
+            return podcastRepo.HamtaAlla().Where(pod => string.Equals(pod.AngivetUrl, url, StringComparison.OrdinalIgnoreCase)).First();
+        }
+
         public string hamtaVirtualTestPod()
         {
             string hamtat = podcastRepo.hamtaVirtualTest();
@@ -133,6 +139,8 @@ namespace BusinessLayer
             int index = podcastRepo.hamtaIndexAvNamn(namn);
             return index;
         }
+
+
 
 
     }

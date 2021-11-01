@@ -72,6 +72,37 @@ namespace DataAccessLayer
             return namnFinnsInte;
         }
 
+        public bool UrlFinnsRedan(string url)
+        {
+            bool urlFinnsInte = true;
+            var allaPoddar = podcastRepo.HamtaAlla();
+
+            for (int i = 0; i < allaPoddar.Count; i++)
+            {
+                if (allaPoddar[i].AngivetUrl.Contains(url))
+                    urlFinnsInte = false;
+            }
+
+            if (!urlFinnsInte)
+            {
+                MessageBox.Show("Det finns redan en podcast med detta URL! Vänligen välj ett unikt URL.");
+            }
+
+            return urlFinnsInte;
+        }
+
+        public bool UrlValidering(string url)
+        {
+            Uri uriResult;
+            bool stammer = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+                           && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            if (!stammer)
+            {
+                MessageBox.Show("Den URL du angivet har något fel!");
+            }
+            return stammer;
+        }
+
         public bool KategoriFinnsRedan(string katNamn)
         {
             bool namnFinnsInte = true;
